@@ -7,6 +7,8 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:testing_app/models/favorites.dart';
 import 'package:testing_app/screens/favorites.dart';
+import 'package:testing_app/models/towatch.dart';
+import 'package:testing_app/screens/towatch.dart';
 import 'package:testing_app/screens/home.dart';
 
 void main() {
@@ -24,6 +26,10 @@ GoRouter router() {
             path: FavoritesPage.routeName,
             builder: (context, state) => const FavoritesPage(),
           ),
+          GoRoute(
+            path: TowatchPage.routeName,
+            builder: (context, state) => const TowatchPage(),
+          ),
         ],
       ),
     ],
@@ -31,12 +37,19 @@ GoRouter router() {
 }
 
 class TestingApp extends StatelessWidget {
-  const TestingApp({super.key});
+  const TestingApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<Favorites>(
-      create: (context) => Favorites(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<Favorites>(
+          create: (context) => Favorites(),
+        ),
+        ChangeNotifierProvider<Towatch>(
+          create: (context) => Towatch(),
+        ),
+      ],
       child: MaterialApp.router(
         title: 'Testing Sample',
         theme: ThemeData(

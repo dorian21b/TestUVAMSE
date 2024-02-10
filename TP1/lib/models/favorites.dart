@@ -20,3 +20,4 @@ class Favorites extends ChangeNotifier {
     notifyListeners();
   }
 }
+
