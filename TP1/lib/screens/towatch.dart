@@ -42,8 +42,15 @@ class TowatchItemTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
-        leading: CircleAvatar(
-          backgroundImage: AssetImage(contenus.imageUrl),
+        leading: Container(
+          width: 50, // Ajustez la largeur selon vos besoins
+          height: 50, // Ajustez la hauteur selon vos besoins
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(contenus.imageUrl), // Utilisez l'image du film
+              fit: BoxFit.cover, // Ajustez le style de l'image
+            ),
+          ),
         ),
         title: Text(
           contenus.title,

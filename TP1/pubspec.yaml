@@ -32,3 +32,6 @@ flutter:
   assets:
     - assets/films/
     - assets/series/
+    - assets/docu/
+    - assets/bd/
+    - assets/page_principale/

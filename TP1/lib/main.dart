@@ -9,7 +9,11 @@ import 'package:testing_app/models/favorites.dart';
 import 'package:testing_app/screens/favorites.dart';
 import 'package:testing_app/models/towatch.dart';
 import 'package:testing_app/screens/towatch.dart';
+import 'package:testing_app/screens/film.dart';
+import 'package:testing_app/screens/series.dart';
+import 'package:testing_app/screens/docu.dart';
 import 'package:testing_app/screens/home.dart';
+import 'package:testing_app/screens/bd.dart';
 
 void main() {
   runApp(const TestingApp());
@@ -23,6 +27,22 @@ GoRouter router() {
         builder: (context, state) => const HomePage(),
         routes: [
           GoRoute(
+            path: FilmPage.routeName,
+            builder: (context, state) => const FilmPage(),
+          ),
+          GoRoute(
+            path: SeriesPage.routeName,
+            builder: (context, state) => const SeriesPage(),
+          ),
+          GoRoute(
+            path: DocuPage.routeName,
+            builder: (context, state) => const DocuPage(),
+          ),
+          GoRoute(
+            path: BdPage.routeName,
+            builder: (context, state) => const BdPage(),
+          ),
+          GoRoute(
             path: FavoritesPage.routeName,
             builder: (context, state) => const FavoritesPage(),
           ),
@@ -35,6 +55,7 @@ GoRouter router() {
     ],
   );
 }
+
 
 class TestingApp extends StatelessWidget {
   const TestingApp({Key? key});
