@@ -1,7 +1,3 @@
-// Copyright 2020 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testing_app/contenus/contenus.dart';
@@ -17,7 +13,13 @@ class FavoritesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorites'),
+        title: const Text(
+          'Vos Favoris',
+          style: TextStyle(                        
+                fontFamily: "PlayfairDisplay",
+          ),
+        ),
+        backgroundColor: Colors.red[900],
       ),
       body: Consumer<Favorites>(
         builder: (context, value, child) => value.items.isNotEmpty
@@ -58,10 +60,20 @@ class FavoriteItemTile extends StatelessWidget {
         title: Text(
           contenus.title,
           key: Key('favorites_text_${contenus.id}'),
+          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "PlayfairDisplay",
+                            color: Colors.black,
+                        ),
         ),
         subtitle: Text(
           contenus.description,
           key: Key('favorites_description_${contenus.id}'),
+          style: TextStyle(
+                            fontSize: 12,
+                            fontFamily: "PlayfairDisplay",
+                        ),
         ),
         trailing: IconButton(
           key: Key('remove_icon_${contenus.id}'),

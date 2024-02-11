@@ -47,7 +47,7 @@ class DocuPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'POPBOX',
+          'Documentaires',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
           ),
@@ -81,7 +81,7 @@ class DocuPage extends StatelessWidget {
             label: const Text('To Watch'),
           ),
         ],*/
-        backgroundColor: Colors.red[600],
+        backgroundColor: Colors.red[900],
       ),
       body: ListView.builder(
         itemCount: contenus.length, // Utilisez la longueur de la liste de films
@@ -120,9 +120,19 @@ class ItemTile extends StatelessWidget {
         title: Text(
           contenus.title, // Utilisez le titre du film
           key: Key('text_${contenus.id}'), // Utilisez l'ID du film pour la clé
+          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "PlayfairDisplay",
+                            color: Colors.black,
+                        ),
         ),
         subtitle: Text(
           contenus.description, // Utilisez la description du film
+          style: TextStyle(
+                            fontSize: 12,
+                            fontFamily: "PlayfairDisplay",
+                        ),
         ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,

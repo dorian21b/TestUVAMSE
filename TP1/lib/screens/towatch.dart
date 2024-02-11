@@ -13,7 +13,13 @@ class TowatchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Towatch'),
+        title: const Text(
+          'À regarder',
+          style: TextStyle(                        
+                fontFamily: "PlayfairDisplay",
+          ),
+        ),
+        backgroundColor: Colors.red[900],
       ),
       body: Consumer<Towatch>(
         builder: (context, value, child) => value.items.isNotEmpty
@@ -55,10 +61,20 @@ class TowatchItemTile extends StatelessWidget {
         title: Text(
           contenus.title,
           key: Key('towatch_text_${contenus.id}'),
+          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "PlayfairDisplay",
+                            color: Colors.black,
+                        ),
         ),
         subtitle: Text(
           contenus.description,
           key: Key('towatch_description_${contenus.id}'),
+          style: TextStyle(
+                            fontSize: 12,
+                            fontFamily: "PlayfairDisplay",
+                        ),
         ),
         trailing: IconButton(
           key: Key('remove_icon_${contenus.id}'),

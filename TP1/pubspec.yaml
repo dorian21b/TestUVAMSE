@@ -28,6 +28,10 @@ flutter:
     - family: PlayfairDisplay
       fonts:
         - asset: fonts/PlayfairDisplay-VariableFont_wght.ttf
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Bold.ttf
+
   uses-material-design: true
   assets:
     - assets/films/
