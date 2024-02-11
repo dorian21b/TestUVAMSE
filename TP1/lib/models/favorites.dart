@@ -3,21 +3,23 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:testing_app/contenus/contenus.dart';
 
 /// The [Favorites] class holds a list of favorite items saved by the user.
 class Favorites extends ChangeNotifier {
-  final List<int> _favoriteItems = [];
+  final List<Contenus> _favoriteItems = [];
 
-  List<int> get items => _favoriteItems;
+  List<Contenus> get items => _favoriteItems;
 
-  void add(int itemNo) {
-    _favoriteItems.add(itemNo);
+  void add(Contenus contenus) {
+    _favoriteItems.add(contenus);
     notifyListeners();
   }
 
-  void remove(int itemNo) {
-    _favoriteItems.remove(itemNo);
+  void remove(Contenus contenus) {
+    _favoriteItems.remove(contenus);
     notifyListeners();
   }
 }
+
 

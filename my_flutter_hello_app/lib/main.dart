@@ -76,7 +76,7 @@ void main() {
       ),
     ),
   );
-} Image.asset("assets/The_Empire_Strikes_Back_(1980_film).jpg"),
+} Image.asset("assets/films/The_Empire_Strikes_Back_(1980_film).jpg"),
 
 Icon(
         Icons.favorite,
@@ -112,42 +112,12 @@ class Home extends StatelessWidget{
           centerTitle:true,
           backgroundColor: Colors.red[600],
         ), 
-        body: Row(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(30),
-              margin: EdgeInsets.all(30),
-              color: Colors.blue,
-              child: Text("1"),
-            ),
-            Container(
-              padding: EdgeInsets.all(30),
-              margin: EdgeInsets.all(30),
-              color: Colors.red,
-              child: Text("2"),
-              ),
-            
-          ],
-        ),
+        body: Image.asset("assets/films/StarWarsMoviePoster1977.jpg"),
         floatingActionButton: FloatingActionButton(
           child: Text("click"),
           onPressed: null,
           backgroundColor: Colors.red[600]
         ),
   );
-  }
-}
-
-class Test extends StatefulWidget {
-  @override
-  _TestState createState() => _TestState();
-}
-
-class _TestState extends State<Tests>{
-
-  int counter = 1; 
-  @override
-  Widget build(buildContext context) {
-    return Container();
   }
 }

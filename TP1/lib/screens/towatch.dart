@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:testing_app/contenus/contenus.dart';
 import 'package:testing_app/models/towatch.dart';
 
 class TowatchPage extends StatelessWidget {
@@ -32,9 +33,9 @@ class TowatchPage extends StatelessWidget {
 
 
 class TowatchItemTile extends StatelessWidget {
-  final int itemNo;
+  final Contenus contenus;
 
-  const TowatchItemTile(this.itemNo, {super.key});
+  const TowatchItemTile(this.contenus, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +43,21 @@ class TowatchItemTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: Colors.primaries[itemNo % Colors.primaries.length],
+          backgroundImage: AssetImage(contenus.imageUrl),
         ),
         title: Text(
-          'Item $itemNo',
-          key: Key('towatch_text_$itemNo'),
+          contenus.title,
+          key: Key('towatch_text_${contenus.id}'),
+        ),
+        subtitle: Text(
+          contenus.description,
+          key: Key('towatch_description_${contenus.id}'),
         ),
         trailing: IconButton(
-          key: Key('remove_icon_$itemNo'),
+          key: Key('remove_icon_${contenus.id}'),
           icon: const Icon(Icons.close),
           onPressed: () {
-            context.read<Towatch>().remove(itemNo);
+            context.read<Towatch>().remove(contenus);
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text('Removed from towatch.'),

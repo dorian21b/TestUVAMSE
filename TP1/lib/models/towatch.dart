@@ -1,18 +1,18 @@
-
+import 'package:testing_app/contenus/contenus.dart';
 import 'package:flutter/material.dart';
 
 class Towatch extends ChangeNotifier {
-  final List<int> _towatchItems = [];
+  final List<Contenus> _towatchItems = [];
 
-  List<int> get items => _towatchItems;
+  List<Contenus> get items => _towatchItems;
 
-  void add(int itemNo) {
-    _towatchItems.add(itemNo);
+  void add(Contenus contenus) {
+    _towatchItems.add(contenus);
     notifyListeners();
   }
 
-  void remove(int itemNo) {
-    _towatchItems.remove(itemNo);
+  void remove(Contenus contenus) {
+    _towatchItems.remove(contenus);
     notifyListeners();
   }
 }

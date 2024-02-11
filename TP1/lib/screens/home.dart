@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:testing_app/contenus/contenus.dart';
 import 'package:testing_app/models/favorites.dart';
 import 'package:testing_app/screens/favorites.dart';
 import 'package:testing_app/models/towatch.dart';
@@ -14,13 +15,41 @@ import 'package:testing_app/screens/towatch.dart';
 class HomePage extends StatelessWidget {
   static const routeName = '/';
 
-  const HomePage({super.key});
+  const HomePage({Key? key});
 
   @override
   Widget build(BuildContext context) {
+    // Créez une liste de films factice pour le démonstration
+    final List<Contenus> contenus = [
+      Contenus(
+        id: 1,
+        title: 'Star Wars 4',
+        description: 'Description of Contenus 1',
+        imageUrl: 'assets/films/StarWarsMoviePoster1977.jpg',
+      ),
+      Contenus(
+        id: 2,
+        title: 'Star Wars 5',
+        description: 'Description of Contenus 2',
+        imageUrl: 'assets/films/The_Empire_Strikes_Back_(1980_film).jpg',
+      ),
+      Contenus(
+        id: 3,
+        title: 'Star Wars 6',
+        description: 'Description of Contenus 3',
+        imageUrl: 'assets/films/ReturnOfTheJediPoster1983.jpg',
+      ),
+      // Ajoutez plus de films ici selon vos besoins
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Testing Sample'),
+        title: const Text(
+          'POPBOX',
+          style: TextStyle(
+            fontFamily: "PlayfairDisplay",
+          ),
+        ),
         actions: [
           TextButton.icon(
             onPressed: () {
@@ -37,22 +66,23 @@ class HomePage extends StatelessWidget {
             label: const Text('To Watch'),
           ),
         ],
+        backgroundColor: Colors.red[600],
       ),
       body: ListView.builder(
-        itemCount: 5,
+        itemCount: contenus.length, // Utilisez la longueur de la liste de films
         cacheExtent: 20.0,
         controller: ScrollController(),
         padding: const EdgeInsets.symmetric(vertical: 16),
-        itemBuilder: (context, index) => ItemTile(index),
+        itemBuilder: (context, index) => ItemTile(contenus[index]), // Utilisez chaque film à l'index actuel
       ),
     );
   }
 }
 
 class ItemTile extends StatelessWidget {
-  final int itemNo;
+  final Contenus contenus;
 
-  const ItemTile(this.itemNo);
+  const ItemTile(this.contenus);
 
   @override
   Widget build(BuildContext context) {
@@ -62,28 +92,38 @@ class ItemTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: Colors.primaries[itemNo % Colors.primaries.length],
+        leading: Container(
+          width: 50, // Ajustez la largeur selon vos besoins
+          height: 50, // Ajustez la hauteur selon vos besoins
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(contenus.imageUrl), // Utilisez l'image du film
+              fit: BoxFit.cover, // Ajustez le style de l'image
+            ),
+          ),
         ),
         title: Text(
-          'Item $itemNo',
-          key: Key('text_$itemNo'),
+          contenus.title, // Utilisez le titre du film
+          key: Key('text_${contenus.id}'), // Utilisez l'ID du film pour la clé
+        ),
+        subtitle: Text(
+          contenus.description, // Utilisez la description du film
         ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             IconButton(
-              key: Key('favorite_icon_$itemNo'),
-              icon: favoritesList.items.contains(itemNo)
+              key: Key('favorite_icon_${contenus.id}'),
+              icon: favoritesList.items.contains(contenus)
                   ? const Icon(Icons.favorite)
                   : const Icon(Icons.favorite_border),
               onPressed: () {
-                !favoritesList.items.contains(itemNo)
-                    ? favoritesList.add(itemNo)
-                    : favoritesList.remove(itemNo);
+                !favoritesList.items.contains(contenus)
+                    ? favoritesList.add(contenus) // Passer le film lui-même
+                    : favoritesList.remove(contenus); // Passer le film lui-même
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(favoritesList.items.contains(itemNo)
+                    content: Text(favoritesList.items.contains(contenus)
                         ? 'Added to favorites.'
                         : 'Removed from favorites.'),
                     duration: const Duration(seconds: 1),
@@ -92,17 +132,17 @@ class ItemTile extends StatelessWidget {
               },
             ),
             IconButton(
-              key: Key('towatch_icon_$itemNo'),
-              icon: towatchList.items.contains(itemNo)
+              key: Key('towatch_icon_${contenus.id}'),
+              icon: towatchList.items.contains(contenus)
                   ? const Icon(Icons.add_to_photos)
                   : const Icon(Icons.add_to_photos_outlined),
               onPressed: () {
-                !towatchList.items.contains(itemNo)
-                    ? towatchList.add(itemNo)
-                    : towatchList.remove(itemNo);
+                !towatchList.items.contains(contenus)
+                    ? towatchList.add(contenus) // Passer le film lui-même
+                    : towatchList.remove(contenus); // Passer le film lui-même
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(towatchList.items.contains(itemNo)
+                    content: Text(towatchList.items.contains(contenus)
                         ? 'Added to Watch.'
                         : 'Removed from watch.'),
                     duration: const Duration(seconds: 1),
