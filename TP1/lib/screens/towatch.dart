@@ -26,6 +26,7 @@ class TowatchPage extends StatelessWidget {
             ? ListView.builder(
                 itemCount: value.items.length,
                 padding: const EdgeInsets.symmetric(vertical: 16),
+                itemExtent: 500, 
                 itemBuilder: (context, index) =>
                     TowatchItemTile(value.items[index]),
               )
@@ -49,12 +50,12 @@ class TowatchItemTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
         leading: Container(
-          width: 50, // Ajustez la largeur selon vos besoins
-          height: 50, // Ajustez la hauteur selon vos besoins
+          width: 50, 
+          height: 50, 
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(contenus.imageUrl), // Utilisez l'image du film
-              fit: BoxFit.cover, // Ajustez le style de l'image
+              image: AssetImage(contenus.imageUrl), 
+              fit: BoxFit.cover, 
             ),
           ),
         ),

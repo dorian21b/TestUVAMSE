@@ -1,7 +1,3 @@
-// Copyright 2020 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -21,27 +17,152 @@ class FilmPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Créez une liste de films factice pour le démonstration
     final List<Contenus> contenus = [
       Contenus(
         id: 1,
         title: 'Star Wars 4',
-        description: 'Description of Contenus 1',
+        description: 'George Lucas ',
         imageUrl: 'assets/films/StarWarsMoviePoster1977.jpg',
       ),
       Contenus(
         id: 2,
         title: 'Star Wars 5',
-        description: 'Description of Contenus 2',
+        description: 'George Lucas',
         imageUrl: 'assets/films/The_Empire_Strikes_Back_(1980_film).jpg',
       ),
       Contenus(
         id: 3,
         title: 'Star Wars 6',
-        description: 'Description of Contenus 3',
+        description: 'George Lucas',
         imageUrl: 'assets/films/ReturnOfTheJediPoster1983.jpg',
       ),
-      // Ajoutez plus de films ici selon vos besoins
+      Contenus(
+        id: 4,
+        title: 'Casablanca',
+        description: 'Michael Curtiz',
+        imageUrl: 'assets/films/Casablanca.jpg',
+      ),
+      Contenus(
+        id: 5,
+        title: 'Citizen Kane',
+        description: 'Orson Welles',
+        imageUrl: 'assets/films/CitizenKane.jpg',
+      ),
+      Contenus(
+        id: 6,
+        title: 'Do the right thing',
+        description: 'Spike Lee',
+        imageUrl: 'assets/films/DoTheRightThing.jpg',
+      ),
+      Contenus(
+        id: 7,
+        title: 'Et pour quelques dollars de plus',
+        description: 'Sergio Leone',
+        imageUrl: 'assets/films/Fewdollars.jpg',
+      ),
+      Contenus(
+        id: 8,
+        title: 'Goodfellas',
+        description: 'Martin Scorsese',
+        imageUrl: 'assets/films/Goodfellas.jpg',
+      ),
+      Contenus(
+        id: 9,
+        title: 'Harakiri',
+        description: 'Masaki Kobayashi',
+        imageUrl: 'assets/films/Harakiri.jpg',
+      ),
+      Contenus(
+        id: 10,
+        title: 'In the Mood for Love',
+        description: 'Wong Kar wai',
+        imageUrl: 'assets/films/InTheMoodForLove.jpg',
+      ),
+      Contenus(
+        id: 11,
+        title: 'M le maudit',
+        description: 'Fritz Lang',
+        imageUrl: 'assets/films/MLeMaudit.jpg',
+      ),
+      Contenus(
+        id: 12,
+        title: 'Once Upon a Time in America',
+        description: 'Sergio Leone',
+        imageUrl: 'assets/films/OnceUponaTimeinAmerica.jpg',
+      ),
+      Contenus(
+        id: 13,
+        title: 'Once Upon a Time in Hollywood',
+        description: 'Quentin Tarantino',
+        imageUrl: 'assets/films/OnceUponaTimeinHollywood.jpg',
+      ),
+      Contenus(
+        id: 13,
+        title: 'Once Upon a Time in the West',
+        description: 'Sergio Leone',
+        imageUrl: 'assets/films/OnceUponaTimeintheWest.jpg',
+      ),
+      Contenus(
+        id: 14,
+        title: 'Once Upon a Time ... the Revolution',
+        description: 'Sergio Leone',
+        imageUrl: 'assets/films/OnceUponaTimeRevolution.jpg',
+      ),
+      Contenus(
+        id: 15,
+        title: 'Parrain 1',
+        description: 'Francis Ford Coppola',
+        imageUrl: 'assets/films/Parrain1.jpg',
+      ),
+      Contenus(
+        id: 16,
+        title: 'Parrain 2',
+        description: 'Francis Ford Coppola',
+        imageUrl: 'assets/films/Parrain2.jpg',
+      ),
+      Contenus(
+        id: 17,
+        title: 'Platoon',
+        description: 'Oliver Stone',
+        imageUrl: 'assets/films/Platoon.jpg',
+      ),
+      Contenus(
+        id: 18,
+        title: 'Pshychose',
+        description: 'Alfred Hitchcock',
+        imageUrl: 'assets/films/Pshycho.jpg',
+      ),
+      Contenus(
+        id: 19,
+        title: 'Ran',
+        description: 'Akira Kurosawa',
+        imageUrl: 'assets/films/Ran.jpg',
+      ),
+      Contenus(
+        id: 20,
+        title: 'Taxi Driver',
+        description: 'Martin Scorsese',
+        imageUrl: 'assets/films/Taxidriver.jpg',
+      ),
+      Contenus(
+        id: 21,
+        title: 'Le Bon, la Brute et le Truand',
+        description: 'Sergio Leone',
+        imageUrl: 'assets/films/TheGoodBadUgly.jpg',
+      ),
+      Contenus(
+        id: 22,
+        title: 'Twin Peaks',
+        description: 'David Lynch, Lesli Linka Glatter, Caleb Deschanel',
+        imageUrl: 'assets/films/TwinPeaks.jpg',
+      ),
+      Contenus(
+        id: 23,
+        title: 'Vertigo',
+        description: 'Alfred Hitchcock',
+        imageUrl: 'assets/films/Vertigo.jpg',
+      ),
+      
     ];
 
     return Scaffold(
@@ -52,43 +173,14 @@ class FilmPage extends StatelessWidget {
             fontFamily: "PlayfairDisplay",
           ),
         ),
-        /*actions: [
-          TextButton.icon(
-            onPressed: () {
-              context.go(HomePage.fullPath);
-            },
-            icon: const Icon(Icons.home),
-            label: const Text('Home'),
-          ),
-          TextButton(
-            onPressed: () {
-              //context.go(FilmPage.fullPath);
-            },
-            child: Text('Films'),
-          ),
-          TextButton.icon(
-            onPressed: () {
-              context.go(FavoritesPage.fullPath);
-            },
-            icon: const Icon(Icons.favorite_border),
-            label: const Text('Favorites'),
-          ),
-          TextButton.icon(
-            onPressed: () {
-              context.go(TowatchPage.fullPath);
-            },
-            icon: const Icon(Icons.add_to_photos),
-            label: const Text('To Watch'),
-          ),
-        ],*/
         backgroundColor: Colors.red[900],
       ),
       body: ListView.builder(
-        itemCount: contenus.length, // Utilisez la longueur de la liste de films
+        itemCount: contenus.length, 
         cacheExtent: 20.0,
         controller: ScrollController(),
         padding: const EdgeInsets.symmetric(vertical: 16),
-        itemBuilder: (context, index) => ItemTile(contenus[index]), // Utilisez chaque film à l'index actuel
+        itemBuilder: (context, index) => ItemTile(contenus[index]), 
       ),
     );
   }
@@ -108,31 +200,31 @@ class ItemTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
         leading: Container(
-          width: 50, // Ajustez la largeur selon vos besoins
-          height: 50, // Ajustez la hauteur selon vos besoins
+          width: 50, 
+          height: 50, 
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(contenus.imageUrl), // Utilisez l'image du film
-              fit: BoxFit.cover, // Ajustez le style de l'image
+              image: AssetImage(contenus.imageUrl), 
+              fit: BoxFit.cover,
             ),
           ),
         ),
         title: Text(
-          contenus.title, // Utilisez le titre du film
+          contenus.title, 
           key: Key('text_${contenus.id}'),
           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                             fontFamily: "PlayfairDisplay",
                             color: Colors.black,
-                        ), // Utilisez l'ID du film pour la clé
+                        ), 
         ),
         subtitle: Text(
           contenus.description,
           style: TextStyle(
                             fontSize: 12,
                             fontFamily: "PlayfairDisplay",
-                        ), // Utilisez la description du film
+                        ), 
         ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
@@ -144,8 +236,8 @@ class ItemTile extends StatelessWidget {
                   : const Icon(Icons.favorite_border),
               onPressed: () {
                 !favoritesList.items.contains(contenus)
-                    ? favoritesList.add(contenus) // Passer le film lui-même
-                    : favoritesList.remove(contenus); // Passer le film lui-même
+                    ? favoritesList.add(contenus) 
+                    : favoritesList.remove(contenus); 
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(favoritesList.items.contains(contenus)
@@ -163,8 +255,8 @@ class ItemTile extends StatelessWidget {
                   : const Icon(Icons.add_to_photos_outlined),
               onPressed: () {
                 !towatchList.items.contains(contenus)
-                    ? towatchList.add(contenus) // Passer le film lui-même
-                    : towatchList.remove(contenus); // Passer le film lui-même
+                    ? towatchList.add(contenus) 
+                    : towatchList.remove(contenus); 
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(towatchList.items.contains(contenus)

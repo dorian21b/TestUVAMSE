@@ -1,7 +1,3 @@
-// Copyright 2020 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -21,74 +17,121 @@ class BdPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Créez une liste de films factice pour le démonstration
     final List<Contenus> contenus = [
       Contenus(
         id: 70,
-        title: '20th_centery_boys',
-        description: 'Description of Contenus 1',
+        title: '20th Centery Boys',
+        description: 'Manga de Naoki Urasawa',
         imageUrl: 'assets/bd/20th_century_boys.jpg',
       ),
       Contenus(
         id: 71,
-        title: 'Akira',
-        description: 'Description of Contenus 2',
+        title: 'Akira (1982)',
+        description: 'Manga de Katsuhiro Otomo',
         imageUrl: 'assets/bd/akira.jpg',
       ),
       Contenus(
         id: 72,
         title: 'Artic Nation',
-        description: 'Description of Contenus 3',
+        description: 'BD franco-belge de Juan Díaz Canales et Juanjo Guarnido',
         imageUrl: 'assets/bd/arctic_nation_blacksad_tome_2.jpg',
       ),
-      // Ajoutez plus de films ici selon vos besoins
+      Contenus(
+        id: 73,
+        title: 'Batman the dark knight returns(1986)',
+        description: 'Comics de Frank Miller',
+        imageUrl: 'assets/bd/batman_the_dark_knight_returns.jpg',
+      ),
+      Contenus(
+        id: 74,
+        title: 'Bersek(1989)',
+        description: 'Manga de Kentaro Miura',
+        imageUrl: 'assets/bd/berserk.jpg',
+      ),
+      Contenus(
+        id: 75,
+        title: 'Calvin et Hobbes(1985)',
+        description: 'Comics de Bill Watterson',
+        imageUrl: 'assets/bd/calvin_et_hobbes.jpg',
+      ),
+      Contenus(
+        id: 76,
+        title: 'Death Note(2003)',
+        description: 'Manga de Tsugumi oba et Takeshi Obata',
+        imageUrl: 'assets/bd/death_note.jpg',
+      ),
+      Contenus(
+        id: 77,
+        title: 'Dragon ball(1984)',
+        description: 'Manga de Akira Toriyama',
+        imageUrl: 'assets/bd/Dragon_ball.jpg',
+      ),
+      Contenus(
+        id: 78,
+        title: 'Fullmetal Alchemist(2001)',
+        description: 'Manga de Hiromu Arakawa',
+        imageUrl: 'assets/bd/fullmetal_alchemist.jpg',
+      ),
+      Contenus(
+        id: 79,
+        title: 'Gaston (1957)',
+        description: 'BD franco-belge de André Franquin et Jean De Mesmaeker (Jidehem)',
+        imageUrl: 'assets/bd/gaston.jpg',
+      ),
+      Contenus(
+        id: 80,
+        title: 'Grasse Carcasse Blast (2009)',
+        description: 'Roman graphique de Manu Larcenet',
+        imageUrl: 'assets/bd/grasse_carcasse_blast_tome_1.jpg',
+      ),
+      Contenus(
+        id: 81,
+        title: 'GTO (1997)',
+        description: 'Manga de Toru Fujisawa',
+        imageUrl: 'assets/bd/gto.jpg',
+      ),
+      Contenus(
+        id: 82,
+        title: 'Gunnm (1990)',
+        description: 'Manga de Yukito Kishiro',
+        imageUrl: 'assets/bd/gunnm.jpg',
+      ),
+      Contenus(
+        id: 83,
+        title: 'Idées noires (2001)',
+        description: 'BD franco-belge de André Franquin',
+        imageUrl: 'assets/bd/idees_noires_integrale.jpg',
+      ),
+      Contenus(
+        id: 84,
+        title: 'Killing Joke (1988)',
+        description: 'Comics de Alan Moore et Brian Bolland',
+        imageUrl: 'assets/bd/killing_joke.jpg',
+      ),
+      Contenus(
+        id: 85,
+        title: 'La jeunesse de Picsou(1992)',
+        description: 'Comics de Don Rosa',
+        imageUrl: 'assets/bd/la_jeunesse_de_picsou.jpg',
+      ),
     ];
 
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Bande dessinée et Manga',
+          'Bandes dessinées et Mangas',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
           ),
         ),
-        /*actions: [
-          TextButton.icon(
-            onPressed: () {
-              context.go(HomePage.fullPath);
-            },
-            icon: const Icon(Icons.home),
-            label: const Text('Home'),
-          ),
-          TextButton(
-            onPressed: () {
-              //context.go(FilmPage.fullPath);
-            },
-            child: Text('Films'),
-          ),
-          TextButton.icon(
-            onPressed: () {
-              context.go(FavoritesPage.fullPath);
-            },
-            icon: const Icon(Icons.favorite_border),
-            label: const Text('Favorites'),
-          ),
-          TextButton.icon(
-            onPressed: () {
-              context.go(TowatchPage.fullPath);
-            },
-            icon: const Icon(Icons.add_to_photos),
-            label: const Text('To Watch'),
-          ),
-        ],*/
         backgroundColor: Colors.red[900],
       ),
       body: ListView.builder(
-        itemCount: contenus.length, // Utilisez la longueur de la liste de films
+        itemCount: contenus.length,
         cacheExtent: 20.0,
         controller: ScrollController(),
         padding: const EdgeInsets.symmetric(vertical: 16),
-        itemBuilder: (context, index) => ItemTile(contenus[index]), // Utilisez chaque film à l'index actuel
+        itemBuilder: (context, index) => ItemTile(contenus[index]), 
       ),
     );
   }
@@ -108,18 +151,18 @@ class ItemTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
         leading: Container(
-          width: 50, // Ajustez la largeur selon vos besoins
-          height: 50, // Ajustez la hauteur selon vos besoins
+          width: 50, 
+          height: 50, 
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(contenus.imageUrl), // Utilisez l'image du film
-              fit: BoxFit.cover, // Ajustez le style de l'image
+              image: AssetImage(contenus.imageUrl), 
+              fit: BoxFit.cover, 
             ),
           ),
         ),
         title: Text(
-          contenus.title, // Utilisez le titre du film
-          key: Key('text_${contenus.id}'), // Utilisez l'ID du film pour la clé
+          contenus.title, 
+          key: Key('text_${contenus.id}'), 
           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
@@ -128,7 +171,7 @@ class ItemTile extends StatelessWidget {
                         ),
         ),
         subtitle: Text(
-          contenus.description, // Utilisez la description du film
+          contenus.description, 
           style: TextStyle(
                             fontSize: 12,
                             fontFamily: "PlayfairDisplay",
@@ -144,8 +187,8 @@ class ItemTile extends StatelessWidget {
                   : const Icon(Icons.favorite_border),
               onPressed: () {
                 !favoritesList.items.contains(contenus)
-                    ? favoritesList.add(contenus) // Passer le film lui-même
-                    : favoritesList.remove(contenus); // Passer le film lui-même
+                    ? favoritesList.add(contenus) 
+                    : favoritesList.remove(contenus); 
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(favoritesList.items.contains(contenus)
@@ -163,8 +206,8 @@ class ItemTile extends StatelessWidget {
                   : const Icon(Icons.add_to_photos_outlined),
               onPressed: () {
                 !towatchList.items.contains(contenus)
-                    ? towatchList.add(contenus) // Passer le film lui-même
-                    : towatchList.remove(contenus); // Passer le film lui-même
+                    ? towatchList.add(contenus) 
+                    : towatchList.remove(contenus); 
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(towatchList.items.contains(contenus)
@@ -178,6 +221,7 @@ class ItemTile extends StatelessWidget {
           ],
         ),
       ),
+      
     );
   }
 }

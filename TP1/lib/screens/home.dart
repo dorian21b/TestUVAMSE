@@ -20,7 +20,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Créez une liste de films factice pour le démonstration   
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -114,13 +113,12 @@ class HomePage extends StatelessWidget {
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [Colors.red[50]!, Colors.white], // Couleurs du dégradé
+                    colors: [Colors.red[50]!, Colors.white],
                 ),
             ),
             child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            // Texte centré en haut
             Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: RichText(
@@ -144,22 +142,21 @@ class HomePage extends StatelessWidget {
                         ),
                     ),
                     ),
-            // Image et texte côte à côte
+            
             Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                    // Image à gauche
+                    
                     Image.asset(
                     'assets/page_principale/Fellini.jpg',
-                    // ajustez la largeur et la hauteur selon vos besoins
+                    
                     width: 300,
                     height: 500,
-                    fit: BoxFit.cover, // ajustez le style de l'image
+                    fit: BoxFit.cover, 
                     ),
-                    SizedBox(width: 16), // espace entre l'image et le texte
-                    // Texte à droite de l'image
+                    SizedBox(width: 16), 
                     Expanded(
                     child: Text.rich(
                         TextSpan(
@@ -174,14 +171,19 @@ class HomePage extends StatelessWidget {
                                 text: 'Federico Fellini',
                                 style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                // Ajoutez d'autres styles au besoin, comme la couleur, la taille de la police, etc.
+                                
                                 ),
                             ),
                             TextSpan(
-                                text: ' was an Italian filmmaker. He is known for his distinctive style, which blends fantasy and baroque images with earthiness.\n He is recognized as one of the greatest and most influential filmmakers of all time. His films have ranked highly in critical polls such as that of Cahiers du Cinéma and Sight & Sound, which lists his 1963 film "heigth and a half" as the 10th-greatest film..',
-                                style: TextStyle(
+                              text: ' est l\'un des plus grands réalisateurs italiens du xxe siècle et l\'un des cinéastes les plus illustres de l\'histoire du cinéma.\n'
+                                    'Il a laissé derrière lui des œuvres riches en satire et voilées d\'une subtile mélancolie, caractérisées par un style onirique et visionnaire.\n'
+                                    'Marquée à ses débuts par le néoréalisme, l\'œuvre de Fellini évolue, dans les années 1960, vers une forme singulière, liée à la modernité cinématographique européenne.\n'
+                                    'Il a remporté deux fois le Grand Prix au Festival du film de Moscou (1963 et 1987), la Palme d\'or au Festival de Cannes 1960 pour La dolce vita et le David di Donatello \n'
+                                    'Luchino-Visconti 1984 ainsi que le Lion d\'or à la Mostra de Venise 1985 et l\'Oscar d\'honneur en 1993 pour l\'ensemble de sa carrière. \n'
+                                    'Il est également Chevalier grand-croix au grand cordon de l\'Ordre du Mérite de la République italienne en 1987 ',
+                              style: TextStyle(
                                 fontFamily: "PlayfairDisplay",
-                                ),
+                              ),
                             ),
                             ],
                         ),
@@ -202,15 +204,15 @@ class HomePage extends StatelessWidget {
                 ),
                 ),
             ),
-            // Ligne d'images supplémentaire
+            
             Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: SizedBox(
-                height: 200, // hauteur fixe pour les images
+                height: 200, 
                 child: ListView(
-                    scrollDirection: Axis.horizontal, // défilement horizontal
+                    scrollDirection: Axis.horizontal, 
                     children: [
-                    // première image
+                    
                     Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset(
@@ -219,7 +221,7 @@ class HomePage extends StatelessWidget {
                         fit: BoxFit.cover,
                         ),
                     ),
-                    // deuxième image
+                    
                     Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset(
@@ -263,5 +265,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-//'assets/page_principale/Fellini.jpg',

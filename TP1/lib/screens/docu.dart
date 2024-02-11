@@ -1,7 +1,3 @@
-// Copyright 2020 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -21,27 +17,92 @@ class DocuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Créez une liste de films factice pour le démonstration
     final List<Contenus> contenus = [
       Contenus(
         id: 50,
         title: 'Black Fish',
-        description: 'Description of Contenus 1',
+        description: 'Gabriela Cowperthwaite',
         imageUrl: 'assets/docu/BlackFish.jpg',
       ),
       Contenus(
         id: 51,
         title: 'Cosmos',
-        description: 'Description of Contenus 2',
+        description: 'AD.Ann Druyan, BB.Brannon Braga, BP.Bill Pope.',
         imageUrl: 'assets/docu/Cosmos.jpg',
       ),
       Contenus(
         id: 52,
         title: 'Etugen',
-        description: 'Description of Contenus 3',
+        description: 'Arnaud Riou',
         imageUrl: 'assets/docu/Etugen.jpg',
       ),
-      // Ajoutez plus de films ici selon vos besoins
+      Contenus(
+        id: 53,
+        title: 'Made in America',
+        description: 'Ezra Edelman',
+        imageUrl: 'assets/docu/MadeInAmerica.jpg',
+      ),
+      Contenus(
+        id: 54,
+        title: 'Our Planet',
+        description: 'Alastair Fothergill',
+        imageUrl: 'assets/docu/OurPlanet.jpg',
+      ),
+      Contenus(
+        id: 55,
+        title: 'Planet Earth',
+        description: 'David Attenborough',
+        imageUrl: 'assets/docu/PlanetEarth.jpg',
+      ),
+      Contenus(
+        id: 56,
+        title: 'Radiohead In Rainbows, From The Basement',
+        description: 'Benjamin Clavel',
+        imageUrl: 'assets/docu/RadioHead.jpg',
+      ),
+      Contenus(
+        id: 57,
+        title: 'Sacerdoce',
+        description: 'Damien Boyer',
+        imageUrl: 'assets/docu/Sacerdoce.jpg',
+      ),
+      Contenus(
+        id: 58,
+        title: 'Stop Making Sense',
+        description: 'Jonathan Demme',
+        imageUrl: 'assets/docu/StopMakingSense.jpg',
+      ),
+      Contenus(
+        id: 59,
+        title: 'Sugar Man (Searching for Sugar Man)',
+        description: 'Malik Bendjelloul',
+        imageUrl: 'assets/docu/SugarMan.jpg',
+      ),
+      Contenus(
+        id: 60,
+        title: 'Suspendu, Des soignants entre deux mondes',
+        description: 'Fabien Moine',
+        imageUrl: 'assets/docu/Suspendus.jpg',
+      ),
+      Contenus(
+        id: 61,
+        title: 'The Wire',
+        description: 'Tiha K.Gudac',
+        imageUrl: 'assets/docu/TheWire.jpg',
+      ),
+      Contenus(
+        id: 62,
+        title: 'Le Monde en guerre',
+        description: 'David Elstein',
+        imageUrl: 'assets/docu/TheWorldAtWar.jpg',
+      ),
+      Contenus(
+        id: 63,
+        title: 'Tous résistants dans l’âme',
+        description: 'Stephane Chatry',
+        imageUrl: 'assets/docu/Tousresistants.jpg',
+      ),
+      
     ];
 
     return Scaffold(
@@ -52,43 +113,14 @@ class DocuPage extends StatelessWidget {
             fontFamily: "PlayfairDisplay",
           ),
         ),
-        /*actions: [
-          TextButton.icon(
-            onPressed: () {
-              context.go(HomePage.fullPath);
-            },
-            icon: const Icon(Icons.home),
-            label: const Text('Home'),
-          ),
-          TextButton(
-            onPressed: () {
-              //context.go(FilmPage.fullPath);
-            },
-            child: Text('Films'),
-          ),
-          TextButton.icon(
-            onPressed: () {
-              context.go(FavoritesPage.fullPath);
-            },
-            icon: const Icon(Icons.favorite_border),
-            label: const Text('Favorites'),
-          ),
-          TextButton.icon(
-            onPressed: () {
-              context.go(TowatchPage.fullPath);
-            },
-            icon: const Icon(Icons.add_to_photos),
-            label: const Text('To Watch'),
-          ),
-        ],*/
         backgroundColor: Colors.red[900],
       ),
       body: ListView.builder(
-        itemCount: contenus.length, // Utilisez la longueur de la liste de films
+        itemCount: contenus.length, 
         cacheExtent: 20.0,
         controller: ScrollController(),
         padding: const EdgeInsets.symmetric(vertical: 16),
-        itemBuilder: (context, index) => ItemTile(contenus[index]), // Utilisez chaque film à l'index actuel
+        itemBuilder: (context, index) => ItemTile(contenus[index]), 
       ),
     );
   }
@@ -108,18 +140,18 @@ class ItemTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
         leading: Container(
-          width: 50, // Ajustez la largeur selon vos besoins
-          height: 50, // Ajustez la hauteur selon vos besoins
+          width: 50, 
+          height: 50,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(contenus.imageUrl), // Utilisez l'image du film
-              fit: BoxFit.cover, // Ajustez le style de l'image
+              image: AssetImage(contenus.imageUrl),
+              fit: BoxFit.cover,
             ),
           ),
         ),
         title: Text(
-          contenus.title, // Utilisez le titre du film
-          key: Key('text_${contenus.id}'), // Utilisez l'ID du film pour la clé
+          contenus.title, 
+          key: Key('text_${contenus.id}'), 
           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
@@ -128,7 +160,7 @@ class ItemTile extends StatelessWidget {
                         ),
         ),
         subtitle: Text(
-          contenus.description, // Utilisez la description du film
+          contenus.description, 
           style: TextStyle(
                             fontSize: 12,
                             fontFamily: "PlayfairDisplay",
@@ -144,8 +176,8 @@ class ItemTile extends StatelessWidget {
                   : const Icon(Icons.favorite_border),
               onPressed: () {
                 !favoritesList.items.contains(contenus)
-                    ? favoritesList.add(contenus) // Passer le film lui-même
-                    : favoritesList.remove(contenus); // Passer le film lui-même
+                    ? favoritesList.add(contenus) 
+                    : favoritesList.remove(contenus); 
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(favoritesList.items.contains(contenus)
@@ -163,8 +195,8 @@ class ItemTile extends StatelessWidget {
                   : const Icon(Icons.add_to_photos_outlined),
               onPressed: () {
                 !towatchList.items.contains(contenus)
-                    ? towatchList.add(contenus) // Passer le film lui-même
-                    : towatchList.remove(contenus); // Passer le film lui-même
+                    ? towatchList.add(contenus) 
+                    : towatchList.remove(contenus); 
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(towatchList.items.contains(contenus)

@@ -1,7 +1,3 @@
-// Copyright 2020 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -21,27 +17,97 @@ class SeriesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Créez une liste de films factice pour le démonstration
     final List<Contenus> contenus = [
       Contenus(
         id: 31,
         title: 'Black Mirror',
-        description: 'Description of Contenus 1',
+        description: 'David Slade',
         imageUrl: 'assets/series/BlackMirror.jpg',
       ),
       Contenus(
         id: 32,
         title: 'Breaking Bad',
-        description: 'Description of Contenus 2',
+        description: 'Vince Gilligan',
         imageUrl: 'assets/series/BreakingBad.jpg',
       ),
       Contenus(
         id: 33,
         title: 'Chernobyl',
-        description: 'Description of Contenus 3',
+        description: 'Johan Renck',
         imageUrl: 'assets/series/Chernobyl.jpg',
       ),
-      // Ajoutez plus de films ici selon vos besoins
+      Contenus(
+        id: 34,
+        title: 'Downton Abbey',
+        description: 'Michael Engler',
+        imageUrl: 'assets/series/DowntownAbbey.jpg',
+      ),
+      Contenus(
+        id: 35,
+        title: 'Godless',
+        description: 'Scott Frank',
+        imageUrl: 'assets/series/Godless.jpg',
+      ),
+      Contenus(
+        id: 36,
+        title: '1883',
+        description: 'Taylor Shéridan',
+        imageUrl: 'assets/series/Millehuitcentquatrevingttrois.jpg',
+      ),
+      Contenus(
+        id: 37,
+        title: 'MindHunter',
+        description: 'David Fincher',
+        imageUrl: 'assets/series/MindHunter.jpg',
+      ),
+      Contenus(
+        id: 38,
+        title: 'Peaky Blinders',
+        description: 'Steven Knight',
+        imageUrl: 'assets/series/PeakyBlinders.jpg',
+      ),
+      Contenus(
+        id: 39,
+        title: 'Queen\'s gambit',
+        description: 'Allan Scott et Scott Frank',
+        imageUrl: 'assets/series/QueenGambit.jpg',
+      ),
+      Contenus(
+        id: 40,
+        title: 'Sambre',
+        description: 'Jean Xavier de Lestrade',
+        imageUrl: 'assets/series/Sambre.jpg',
+      ),
+      Contenus(
+        id: 40,
+        title: 'Severance',
+        description: 'Ben Stiller et Aoife McArdle',
+        imageUrl: 'assets/series/Severance.jpg',
+      ),
+      Contenus(
+        id: 41,
+        title: 'Sherlock',
+        description: 'Steven Moffat et Mark Gatiss ',
+        imageUrl: 'assets/series/Sherlock.jpg',
+      ),
+      Contenus(
+        id: 42,
+        title: 'The Sopranos',
+        description: ' Tim Van Patten, John Patterson, Allen Coulter et Alan Taylor',
+        imageUrl: 'assets/series/Sopranos.jpg',
+      ),
+      Contenus(
+        id: 43,
+        title: 'The Boys',
+        description: 'Eric Kripke',
+        imageUrl: 'assets/series/TheBoys.jpg',
+      ),
+      Contenus(
+        id: 44,
+        title: 'True Detective',
+        description: 'Cary Fukunaga',
+        imageUrl: 'assets/series/TrueDetective.jpg',
+      ),
     ];
 
     return Scaffold(
@@ -52,43 +118,14 @@ class SeriesPage extends StatelessWidget {
             fontFamily: "PlayfairDisplay",
           ),
         ),
-        /*actions: [
-          TextButton.icon(
-            onPressed: () {
-              context.go(HomePage.fullPath);
-            },
-            icon: const Icon(Icons.home),
-            label: const Text('Home'),
-          ),
-          TextButton(
-            onPressed: () {
-              //context.go(FilmPage.fullPath);
-            },
-            child: Text('Films'),
-          ),
-          TextButton.icon(
-            onPressed: () {
-              context.go(FavoritesPage.fullPath);
-            },
-            icon: const Icon(Icons.favorite_border),
-            label: const Text('Favorites'),
-          ),
-          TextButton.icon(
-            onPressed: () {
-              context.go(TowatchPage.fullPath);
-            },
-            icon: const Icon(Icons.add_to_photos),
-            label: const Text('To Watch'),
-          ),
-        ],*/
         backgroundColor: Colors.red[900],
       ),
       body: ListView.builder(
-        itemCount: contenus.length, // Utilisez la longueur de la liste de films
+        itemCount: contenus.length, 
         cacheExtent: 20.0,
         controller: ScrollController(),
         padding: const EdgeInsets.symmetric(vertical: 16),
-        itemBuilder: (context, index) => ItemTile(contenus[index]), // Utilisez chaque film à l'index actuel
+        itemBuilder: (context, index) => ItemTile(contenus[index]), 
       ),
     );
   }
@@ -108,31 +145,31 @@ class ItemTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
         leading: Container(
-          width: 50, // Ajustez la largeur selon vos besoins
-          height: 50, // Ajustez la hauteur selon vos besoins
+          width: 50, 
+          height: 50, 
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(contenus.imageUrl), // Utilisez l'image du film
-              fit: BoxFit.cover, // Ajustez le style de l'image
+              image: AssetImage(contenus.imageUrl), 
+              fit: BoxFit.cover, 
             ),
           ),
         ),
         title: Text(
-          contenus.title, // Utilisez le titre du film
+          contenus.title,
           key: Key('text_${contenus.id}'), 
           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                             fontFamily: "PlayfairDisplay",
                             color: Colors.black,
-                        ),// Utilisez l'ID du film pour la clé
+                        ),
         ),
         subtitle: Text(
           contenus.description,
           style: TextStyle(
                             fontSize: 12,
                             fontFamily: "PlayfairDisplay",
-                        ), // Utilisez la description du film
+                        ), 
         ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
@@ -144,8 +181,8 @@ class ItemTile extends StatelessWidget {
                   : const Icon(Icons.favorite_border),
               onPressed: () {
                 !favoritesList.items.contains(contenus)
-                    ? favoritesList.add(contenus) // Passer le film lui-même
-                    : favoritesList.remove(contenus); // Passer le film lui-même
+                    ? favoritesList.add(contenus) 
+                    : favoritesList.remove(contenus); 
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(favoritesList.items.contains(contenus)
@@ -163,8 +200,8 @@ class ItemTile extends StatelessWidget {
                   : const Icon(Icons.add_to_photos_outlined),
               onPressed: () {
                 !towatchList.items.contains(contenus)
-                    ? towatchList.add(contenus) // Passer le film lui-même
-                    : towatchList.remove(contenus); // Passer le film lui-même
+                    ? towatchList.add(contenus) 
+                    : towatchList.remove(contenus);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(towatchList.items.contains(contenus)
