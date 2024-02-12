@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tp2/classes/classe_exercice.dart';
 
-class Ex1 extends StatelessWidget {
+class Ex2 extends StatelessWidget {
   final Exercice exercice;
 
-  const Ex1({Key? key, required this.exercice}) : super(key: key);
+  const Ex2({Key? key, required this.exercice}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
