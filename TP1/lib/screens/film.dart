@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:testing_app/contenus/contenus.dart';
-import 'package:testing_app/models/favorites.dart';
-import 'package:testing_app/screens/favorites.dart';
-import 'package:testing_app/models/towatch.dart';
-import 'package:testing_app/screens/towatch.dart';
-import 'package:testing_app/screens/home.dart';
+import 'package:tp1/contenus/contenus.dart';
+import 'package:tp1/models/favorites.dart';
+import 'package:tp1/screens/favorites.dart';
+import 'package:tp1/models/towatch.dart';
+import 'package:tp1/screens/towatch.dart';
+import 'package:tp1/screens/home.dart';
 
 
 class FilmPage extends StatelessWidget {

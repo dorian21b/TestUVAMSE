@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testing_app/contenus/contenus.dart';
+import 'package:tp1/contenus/contenus.dart';
 
 class Favorites extends ChangeNotifier {
   final List<Contenus> _favoriteItems = [];

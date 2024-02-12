@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:testing_app/contenus/contenus.dart';
-import 'package:testing_app/models/towatch.dart';
+import 'package:tp1/contenus/contenus.dart';
+import 'package:tp1/models/towatch.dart';
 
 class TowatchPage extends StatelessWidget {
   static const routeName = 'towatch_page';

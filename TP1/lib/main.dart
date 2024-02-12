@@ -5,15 +5,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:testing_app/models/favorites.dart';
-import 'package:testing_app/screens/favorites.dart';
-import 'package:testing_app/models/towatch.dart';
-import 'package:testing_app/screens/towatch.dart';
-import 'package:testing_app/screens/film.dart';
-import 'package:testing_app/screens/series.dart';
-import 'package:testing_app/screens/docu.dart';
-import 'package:testing_app/screens/home.dart';
-import 'package:testing_app/screens/bd.dart';
+import 'package:tp1/models/favorites.dart';
+import 'package:tp1/screens/favorites.dart';
+import 'package:tp1/models/towatch.dart';
+import 'package:tp1/screens/towatch.dart';
+import 'package:tp1/screens/film.dart';
+import 'package:tp1/screens/series.dart';
+import 'package:tp1/screens/docu.dart';
+import 'package:tp1/screens/home.dart';
+import 'package:tp1/screens/bd.dart';
 
 void main() {
   runApp(const TestingApp());
@@ -72,7 +72,7 @@ class TestingApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
-        title: 'Testing Sample',
+        title: 'TP 1 ',
         theme: ThemeData(
           colorSchemeSeed: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity,
