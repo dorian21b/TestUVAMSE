@@ -26,7 +26,6 @@ class TowatchPage extends StatelessWidget {
             ? ListView.builder(
                 itemCount: value.items.length,
                 padding: const EdgeInsets.symmetric(vertical: 16),
-                itemExtent: 500, 
                 itemBuilder: (context, index) =>
                     TowatchItemTile(value.items[index]),
               )
