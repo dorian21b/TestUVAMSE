@@ -1,15 +1,16 @@
 name: tp1
-description: "TP1."
+description: tp1.
+
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.0-99.0.dev <4.0.0'
+  sdk: ^3.2.0
 
 dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.6
+  cupertino_icons: ^1.0.3
   provider: ^6.0.2
   go_router: ">=10.0.0 <14.0.0"
 
