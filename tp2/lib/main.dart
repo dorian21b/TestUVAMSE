@@ -53,7 +53,14 @@ class TodosScreen extends StatelessWidget {
               ),
               margin: EdgeInsets.all(8), 
               child: ListTile(
-                title: Text(exercices[index].title),
+                title: Text(
+                  exercices[index].title,
+                  style: TextStyle(
+                  fontFamily: "PlayfairDisplay",
+                  //fontSize: 30,
+                  ),
+                ),
+                trailing: Icon(Icons.arrow_right_rounded, size: 36),
                 onTap: () {
                   if (index == 0) {
                     Navigator.push(

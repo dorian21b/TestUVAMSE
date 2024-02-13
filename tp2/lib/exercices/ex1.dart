@@ -20,7 +20,13 @@ class Ex1 extends StatelessWidget {
         ),
         backgroundColor: Colors.red[900],
       ),
-      //body:
+      body: Center(
+        child: Image.asset(
+          'assets/StarWarsMoviePoster1977.jpg',
+          width: 300,
+          height: 500,
+        ),
+      ),
     );
   }
 }
