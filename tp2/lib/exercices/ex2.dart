@@ -54,10 +54,11 @@ class _Ex2State extends State<Ex2> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 1',
+          'Exercice 2',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 30,
+            fontWeight: FontWeight.bold,
           ),
         ),
         backgroundColor: Colors.red[900],

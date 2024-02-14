@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tp2/exercices/ex1.dart';
 import 'package:tp2/exercices/ex2.dart';
+import 'package:tp2/exercices/ex3.dart';
 import 'package:tp2/classes/classe_exercice.dart';
 
 void main() {
@@ -12,11 +13,15 @@ void main() {
         exercices: [
           Exercice(
             'Exercice 1',
-            'Description de l\'exercice 1',
+            'Afficher une image',
           ),
           Exercice(
             'Exercice 2',
-            'Description de l\'exercice 2',
+            'Transformer une image',
+          ),
+          Exercice(
+            'Exercice 3',
+            'Affichage d\'une tuile (un morceau d\'image)',
           ),
         ],
       ),
@@ -37,7 +42,8 @@ class TodosScreen extends StatelessWidget {
           'TP2',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
-            fontSize: 30,
+            fontSize: 40,
+            fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
@@ -57,7 +63,13 @@ class TodosScreen extends StatelessWidget {
                   exercices[index].title,
                   style: TextStyle(
                   fontFamily: "PlayfairDisplay",
-                  //fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  ),
+                ),
+                subtitle: Text(
+                  exercices[index].description,
+                  style: TextStyle(
+                    fontFamily: "PlayfairDisplay",
                   ),
                 ),
                 trailing: Icon(Icons.arrow_right_rounded, size: 36),
@@ -74,6 +86,13 @@ class TodosScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => Ex2(exercice: exercices[index]),
+                      ),
+                    );
+                  } else if (index == 2) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Ex3(exercice: exercices[index]),
                       ),
                     );
                   }
