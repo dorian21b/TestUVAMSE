@@ -54,16 +54,17 @@ class _Ex2State extends State<Ex2> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 2',
+          'Exercice 2: transformer une image',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
-            fontSize: 30,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
         backgroundColor: Colors.red[900],
       ),
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
@@ -229,6 +230,7 @@ class _Ex2State extends State<Ex2> {
           ),
         ],
       ),
+    ),
     );
   }
 }

@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tp2/exercices/ex1.dart';
 import 'package:tp2/exercices/ex2.dart';
-import 'package:tp2/exercices/ex3.dart';
+import 'package:tp2/exercices/ex4.dart';
+import 'package:tp2/exercices/ex5a.dart';
+import 'package:tp2/exercices/ex5b.dart';
+import 'package:tp2/exercices/ex5c.dart';
+import 'package:tp2/exercices/ex6a.dart';
+import 'package:tp2/exercices/ex6b.dart';
+import 'package:tp2/exercices/ex7.dart';
 import 'package:tp2/classes/classe_exercice.dart';
 
 void main() {
@@ -20,8 +26,32 @@ void main() {
             'Transformer une image',
           ),
           Exercice(
-            'Exercice 3',
+            'Exercice 4',
             'Affichage d\'une tuile (un morceau d\'image)',
+          ),
+          Exercice(
+            'Exercice 5a',
+            'Génération du plateau de tuiles de couleurs aléatoires',
+          ),
+          Exercice(
+            'Exercice 5b',
+            'Génération du plateau de tuiles d\'une image',
+          ),
+          Exercice(
+            'Exercice 5c',
+            'Configuration d\'un plateau de taquin',
+          ),
+          Exercice(
+            'Exercice 6a',
+            'Bouger des tuiles',
+          ),
+          Exercice(
+            'Exercice 6b',
+            'Bouger des tuiles dans une grille',
+          ),
+          Exercice(
+            'Exercice 7',
+            'Jeu de taquin',
           ),
         ],
       ),
@@ -92,10 +122,52 @@ class TodosScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Ex3(exercice: exercices[index]),
+                        builder: (context) => Ex4(exercice: exercices[index]),
                       ),
                     );
-                  }
+                  } else if (index == 3) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Ex5a(exercice: exercices[index]),
+                      ),
+                    );
+                  } else if (index == 4) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Ex5b(exercice: exercices[index]),
+                      ),
+                    );
+                  } else if (index == 5) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Ex5c(exercice: exercices[index]),
+                      ),
+                    );
+                  } else if (index == 6) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Ex6a(exercice: exercices[index]),
+                      ),
+                    );
+                  } else if (index == 7) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Ex6b(exercice: exercices[index]),
+                      ),
+                    );
+                  } else if (index == 8) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Ex7(exercice: exercices[index]),
+                      ),
+                    );
+                  }  
                 },
               ),
             );
