@@ -1,76 +1,46 @@
-import 'package:provider/provider.dart';
 import 'package:tp2/classes/classe_exercice.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'dart:math' as math;
-
-math.Random random = math.Random();
 
 class Tile {
   Color color = Colors.grey;
-  int number;
+  String text = 'tuile';
 
-  Tile(this.color, this.number);
-  
-  Tile.randomColor(this.number) {
-    this.color = Colors.grey;
-  }
+  Tile(this.color, this.text);
 }
 
-class TileWidget extends StatefulWidget {
+class TileWidget extends StatelessWidget {
   final Tile tile;
-  final int currentWhiteTile;
-  final void Function(int) onTileTapped; 
 
-  TileWidget(this.tile, this.currentWhiteTile, this.onTileTapped);
+  TileWidget(this.tile);
 
-  @override
-  _TileWidgetState createState() => _TileWidgetState();
-}
-
-class _TileWidgetState extends State<TileWidget> {
   @override
   Widget build(BuildContext context) {
-   
-    final Map<int, List<int>> neighbors = {
-      1: [2, 4],
-      2: [1, 3, 5],
-      3: [2, 6],
-      4: [1, 5, 7],
-      5: [2, 4, 6, 8],
-      6: [3, 5, 9],
-      7: [4, 8],
-      8: [5, 7, 9],
-      9: [6, 8],
-    };
+    return coloredBox();
+  }
 
-   
-    final bool isNeighbor =
-        neighbors[widget.currentWhiteTile]?.contains(widget.tile.number) ?? false;
-
-    return GestureDetector(
-      onTap: () {
-        widget.onTileTapped(widget.tile.number);
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: widget.currentWhiteTile == widget.tile.number ? Colors.white : widget.tile.color,
-          
-          border: isNeighbor
-              ? Border.all(color: Colors.red, width: 5)
-              : null, 
-        ),
-        child: Center(
-          child: Text(
-            widget.tile.number.toString(),
-            style: TextStyle(
-              fontSize: 24,
-              color: widget.currentWhiteTile == widget.tile.number ? Colors.black : Colors.white,
-            ),
+  Widget coloredBox() {
+  return SizedBox(
+    width: 100.0, 
+    height: 100.0,
+    child: Container(
+      color: tile.color,
+      child: Center(
+        child: Text(
+          tile.text,
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
+
+
 }
 
 class Ex6b extends StatefulWidget {
@@ -83,35 +53,24 @@ class Ex6b extends StatefulWidget {
 }
 
 class _Ex6bState extends State<Ex6b> {
-  int currentWhiteTile = -1; 
+  late List<String> texts = ['A', 'B'];
+  late List<Widget> tiles; 
 
-  List<Widget> generateTiles() {
-    List<Widget> tiles = [];
-    for (int i = 1; i <= 9; i++) {
-      Tile tile = Tile.randomColor(i);
-      tiles.add(TileWidget(tile, currentWhiteTile, _handleTileTap)); 
-    }
-    return tiles;
-  }
-
-  void _handleTileTap(int tileNumber) {
-    setState(() {
-      if (currentWhiteTile == tileNumber) {
-        currentWhiteTile = -1; 
-      } else {
-        currentWhiteTile = tileNumber; 
-      }
-    });
+  @override
+  void initState() {
+    super.initState();
+    tiles = List<Widget>.generate(
+      texts.length,
+      (index) => TileWidget(Tile(Colors.grey, texts[index])),
+    ); 
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> tiles = generateTiles();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 6b: bouger des tuiles dans une grille',
+          'Exercice 6b: Bouger des tuiles avec des couleurs uniques et un texte',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,
@@ -120,19 +79,19 @@ class _Ex6bState extends State<Ex6b> {
         ),
         backgroundColor: Colors.red[900],
       ),
-      body: Center(
-        child: Container(
-          height: 500,
-          width: 500,
-          child: GridView.count(
-            padding: const EdgeInsets.all(20),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            crossAxisCount: 3,
-            children: tiles,
-          ),
-        ),
+      body: Row(
+        children: tiles,
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.sentiment_very_satisfied),
+        onPressed: swapTiles,
       ),
     );
+  }
+
+  void swapTiles() {
+    setState(() {
+      tiles.insert(1, tiles.removeAt(0));
+    });
   }
 }

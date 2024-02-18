@@ -8,6 +8,8 @@ import 'package:tp2/exercices/ex5b.dart';
 import 'package:tp2/exercices/ex5c.dart';
 import 'package:tp2/exercices/ex6a.dart';
 import 'package:tp2/exercices/ex6b.dart';
+import 'package:tp2/exercices/ex6c.dart';
+import 'package:tp2/exercices/ex6d.dart';
 import 'package:tp2/exercices/ex7.dart';
 import 'package:tp2/classes/classe_exercice.dart';
 
@@ -47,6 +49,13 @@ void main() {
           ),
           Exercice(
             'Exercice 6b',
+            'Bouger des tuiles avec des couleurs uniques et un texte',
+          ),
+          Exercice(
+            'Exercice 6c',
+            'Bouger des tuiles avec clique sur la tuile',
+          ),Exercice(
+            'Exercice 6d',
             'Bouger des tuiles dans une grille',
           ),
           Exercice(
@@ -161,6 +170,20 @@ class TodosScreen extends StatelessWidget {
                       ),
                     );
                   } else if (index == 8) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Ex6c(exercice: exercices[index]),
+                      ),
+                    );
+                  } else if (index == 9) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Ex6d(exercice: exercices[index]),
+                      ),
+                    );
+                  } else if (index == 10) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(

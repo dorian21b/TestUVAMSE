@@ -1,21 +1,13 @@
 import 'package:tp2/classes/classe_exercice.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
-
-math.Random random = math.Random();
 
 class Tile {
   Color color = Colors.grey;
-  String text;
+  String text = 'tuile';
 
   Tile(this.color, this.text);
-
-  Tile.randomColor(this.text) {
-    this.color = Color.fromARGB(
-        255, random.nextInt(255), random.nextInt(255), random.nextInt(255));
-  }
 }
 
 class TileWidget extends StatelessWidget {
@@ -51,26 +43,26 @@ class TileWidget extends StatelessWidget {
 
 }
 
-class Ex6a extends StatefulWidget {
+class Ex6c extends StatefulWidget {
   final Exercice exercice;
 
-  const Ex6a({Key? key, required this.exercice}) : super(key: key);
+  const Ex6c({Key? key, required this.exercice}) : super(key: key);
 
   @override
-  _Ex6aState createState() => _Ex6aState();
+  _Ex6cState createState() => _Ex6cState();
 }
 
-class _Ex6aState extends State<Ex6a> {
+class _Ex6cState extends State<Ex6c> {
   late List<String> texts = ['A', 'B'];
-  late List<Widget> tiles;
+  late List<Widget> tiles; 
 
   @override
   void initState() {
     super.initState();
     tiles = List<Widget>.generate(
       texts.length,
-      (index) => TileWidget(Tile.randomColor(texts[index])),
-    );
+      (index) => TileWidget(Tile(Colors.grey, texts[index])),
+    ); 
   }
 
   @override
@@ -78,7 +70,7 @@ class _Ex6aState extends State<Ex6a> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 6a: bouger des tuiles',
+          'Exercice 6c: Bouger des tuiles avec clique sur la tuile',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,
