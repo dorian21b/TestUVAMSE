@@ -53,10 +53,10 @@ void main() {
           ),
           Exercice(
             'Exercice 6c',
-            'Bouger des tuiles avec clique sur la tuile',
+            'Exercice 6c: bouger des tuiles dans une grille',
           ),Exercice(
             'Exercice 6d',
-            'Bouger des tuiles dans une grille',
+            'Bouger des tuiles dans une grille avec modificateur de taille',
           ),
           Exercice(
             'Exercice 7',
