@@ -59,7 +59,7 @@ class _TileWidgetState extends State<TileWidget> {
           child: Text(
             widget.tile.text,
             style: TextStyle(
-              fontSize: 24 - (_currentSliderValue * 2),
+              fontSize: 24 - (_currentSliderValue * 1),
               color: widget.currentWhiteTile == widget.tile.position
                   ? Colors.black
                   : Colors.white,
