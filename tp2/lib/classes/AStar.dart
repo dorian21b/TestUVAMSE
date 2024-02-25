@@ -37,7 +37,7 @@ class PriorityQueue {
   // Méthode pour ajouter un élément à la file de priorité
   void add(Taquin element) {
     int index = 0;
-    while (index < _elements.length && (element.f - _elements[index].f >= 0)) {
+    while (index < _elements.length && (element.f - _elements[index].f > 0)) {
       index++;
     }
     _elements.insert(index, element);
@@ -66,21 +66,21 @@ List<String> solveTaquin(Taquin initialTaquin, Taquin finalTaquin) {
     //nbcout = nbcout+1;
     //print(nbcout);
     Taquin current = openSet.removeFirst(); // Retirer l'état avec le coût le plus faible
-    print(current.tiles_taquin);
+    //print(current.tiles_taquin);
     //print(current.f);
     closedSet.add(current); // Ajouter l'état actuel à l'ensemble des états explorés
 
     if (current == finalTaquin) {
       // Solution trouvée, retracer le chemin à partir de l'état final jusqu'à l'état initial
       while (current != initialTaquin) {
-        print("en train de remonter");
+       // print("en train de remonter");
         // Déterminer le mouvement effectué pour passer de l'état parent à l'état actuel
         Taquin? parent = current.parent;
         if (parent != null) {
           int index = current.index_white;
-          print(index);
+          //print(index);
           int parentIndex = parent.index_white;
-          print(parentIndex);
+         // print(parentIndex);
           if (index - parent.size == parentIndex) {
             moves.add("Down");
           } else if (index + parent.size == parentIndex) {
@@ -98,7 +98,7 @@ List<String> solveTaquin(Taquin initialTaquin, Taquin finalTaquin) {
       
       // Inverser la liste des mouvements pour obtenir le bon ordre
       moves = moves.reversed.toList();
-      print("solution trouvées");
+      //print("solution trouvées");
       return moves;
     }
 
