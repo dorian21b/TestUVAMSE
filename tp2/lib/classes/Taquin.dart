@@ -95,7 +95,7 @@ class Taquin {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is Taquin && listEquals(other.tiles_taquin, tiles_taquin);
+    return other is Taquin && listEquals(other.tiles_taquin, this.tiles_taquin);
   }
 
   // Redéfinition de la méthode hashCode
