@@ -82,6 +82,7 @@ class Taquin {
   return distance;
 }
 
+
   // Méthode pour mettre à jour la priorité
   void updatePriority() {
     h = heuristic();

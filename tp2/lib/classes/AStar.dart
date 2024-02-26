@@ -66,14 +66,14 @@ List<String> solveTaquin(Taquin initialTaquin, Taquin finalTaquin) {
     //nbcout = nbcout+1;
     //print(nbcout);
     Taquin current = openSet.removeFirst(); // Retirer l'état avec le coût le plus faible
-    //print(current.tiles_taquin);
+    print(current.tiles_taquin);
     //print(current.f);
     closedSet.add(current); // Ajouter l'état actuel à l'ensemble des états explorés
 
     if (current == finalTaquin) {
       // Solution trouvée, retracer le chemin à partir de l'état final jusqu'à l'état initial
       while (current != initialTaquin) {
-       // print("en train de remonter");
+        print("en train de remonter");
         // Déterminer le mouvement effectué pour passer de l'état parent à l'état actuel
         Taquin? parent = current.parent;
         if (parent != null) {
@@ -98,7 +98,7 @@ List<String> solveTaquin(Taquin initialTaquin, Taquin finalTaquin) {
       
       // Inverser la liste des mouvements pour obtenir le bon ordre
       moves = moves.reversed.toList();
-      //print("solution trouvées");
+      print("solution trouvées");
       return moves;
     }
 
