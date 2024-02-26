@@ -321,13 +321,21 @@ class _Ex7State extends State<Ex7> {
         Taquin coup = Taquin(coup_text, _currentSliderValue.toInt());
         coup_joue.add(coup);
         Nbcoupjoue += 1;
-        if (_currentSliderValue.toInt() < 4) {
+        if (_currentSliderValue.toInt() < 4 && difficulty<10) {
           solution = solveTaquin(coup, finalTaquin);
           Nbcouppourgagner = solution.length;
           
         }
       }
     });
+  }
+  String getMessageFromInteger(int value) {
+                    // Logique pour déterminer le message correspondant à la valeur de l'entier
+                    if (difficulty < 10) {
+                      return "courante: $Nbcouppourgagner";
+                    } else {
+                      return "initiale: $Nbcouppourgagner";
+                    }
   }
 
   void shuffleTiles() {
@@ -621,11 +629,11 @@ class _Ex7State extends State<Ex7> {
                 ),
                 SizedBox(width: 10),
                 Expanded(
-                  child: Text(
-                    'Nombre de coups pour gagner depuis la position courante: $Nbcouppourgagner',
-                    overflow: TextOverflow.visible,
+                    child: Text(
+                      'Nombre de coups pour gagner depuis la position  ${getMessageFromInteger(Nbcouppourgagner)}',
+                      overflow: TextOverflow.visible,
+                    ),
                   ),
-                ),
               ],
             ),
           ],
