@@ -20,6 +20,7 @@ Map<int, List<int>> neighbors = {
   9: [6, 8],
 };
 
+Color color_choice = Colors.grey;
 bool isVisible = false;
 bool startButtonPressed = false;
 String imageUrl = "";
@@ -87,7 +88,7 @@ class Tile {
       );
     }
   } else {
-    return Container(color: Colors.white); // Tuile blanche
+    return Container(color: Colors.white); 
   }
 }
 
@@ -170,14 +171,14 @@ class _IconChangerState extends State<IconChanger> {
     Icons.whatshot, // Difficile
   ];
 
-  List<int> _intValues = [5, 10, 13]; // Liste des entiers à utiliser
-  int _intValueIndex = 0; // Index actuel dans la liste des entiers
+  List<int> _intValues = [5, 10, 13]; 
+  int _intValueIndex = 0; 
 
   void _changeIconAndValue() {
     setState(() {
-      _iconIndex = (_iconIndex + 1) % _icons.length; // Changement d'icône
+      _iconIndex = (_iconIndex + 1) % _icons.length; 
       _intValueIndex =
-          (_intValueIndex + 1) % _intValues.length; // Changement de l'entier
+          (_intValueIndex + 1) % _intValues.length; 
       difficulty = _intValues[_intValueIndex];
       print(difficulty);
     });
@@ -196,7 +197,7 @@ class _IconChangerState extends State<IconChanger> {
         ),
         child: Center(
           child: Icon(
-            _icons[_iconIndex], // Affiche l'icône actuelle
+            _icons[_iconIndex], 
             size: 50,
             color: Colors.white,
           ),
@@ -218,6 +219,14 @@ class Ex7 extends StatefulWidget {
 class _Ex7State extends State<Ex7> {
   bool isPlaying = false;
   int currentWhiteTile = -1;
+
+  String? selectedImagePath;
+
+  void setColorChoice(Color color) {
+    setState(() {
+      color_choice = color;
+    });
+  }
 
   void resetGame() {
     setState(() {
@@ -283,7 +292,7 @@ class _Ex7State extends State<Ex7> {
     Tile tile;
     if (Imageasset || ImageInternet) {
       if (liste_texts[i - 1] == "") {
-        tile = Tile(Colors.white, "", i); // Tuile blanche
+        tile = Tile(Colors.white, "", i); 
       } else {
         int a = int.parse(liste_texts[i - 1]) - 1;
         int rowIndex = a ~/ _currentSliderValue.toInt();
@@ -291,11 +300,11 @@ class _Ex7State extends State<Ex7> {
         double alignmentX = -1 + (colIndex * 2) / (_currentSliderValue.toInt() - 1);
         double alignmentY = -1 + (rowIndex * 2) / (_currentSliderValue.toInt() - 1);
         Alignment alignment = Alignment(alignmentX, alignmentY);
-        tile = Tile(Colors.grey, liste_texts[i - 1], i,
+        tile = Tile(color_choice, liste_texts[i - 1], i,
             path: path_image, alignment: alignment, widthFactor: factor, heightFactor: factor);
       }
     } else {
-      tile = Tile(Colors.grey, liste_texts[i - 1], i);
+      tile = Tile(color_choice, liste_texts[i - 1], i);
     }
 
     generatedTiles.add(TileWidget(tile, currentWhiteTile, _handleTileTap));
@@ -330,7 +339,7 @@ class _Ex7State extends State<Ex7> {
     });
   }
   String getMessageFromInteger(int value) {
-                    // Logique pour déterminer le message correspondant à la valeur de l'entier
+                    
                     if (difficulty < 10) {
                       return "courante: $Nbcouppourgagner";
                     } else {
@@ -453,19 +462,60 @@ class _Ex7State extends State<Ex7> {
                           content: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
-                              ListTile(
-                                title: Text("Choisir une Image dans assets"),
-                                onTap: () async {
-                                  setState(() {
-                                    path_image =
-                                        'assets/Salvador_Dali_A_(Dali_Atomicus)_09633u.jpg';
-                                    Imageasset = true;
-                                    ImageInternet = false;
-                                    isVisible = true;
-                                  });
-                                  Navigator.of(context).pop(); 
-                                },
-                              ),
+                             ListTile(
+  title: Text("Choisir une Image dans assets"),
+  onTap: () async {
+    Navigator.of(context).pop();
+
+    String? selectedImagePath = await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        List<String> imagePaths = [
+          'assets/Fellini.jpg',
+          'assets/Salvador_Dali_A_(Dali_Atomicus)_09633u.jpg',
+          'assets/sergio.jpg',
+        ];
+
+        return AlertDialog(
+          title: Text("Choisissez votre image"),
+          content: Container(
+            width: double.maxFinite,
+            height: 200, 
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal, 
+              itemCount: imagePaths.length,
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      path_image = imagePaths[index];
+                      Imageasset = true;
+                      ImageInternet = false;
+                      isVisible = true;
+                    });
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                    margin: EdgeInsets.all(8),
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(imagePaths[index]),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        );
+      },
+    );
+  },
+),
+
                               ListTile(
                                 title: Text("Charger une image du Web"),
                                 onTap: () async {
@@ -480,16 +530,48 @@ class _Ex7State extends State<Ex7> {
                                 },
                               ),
                               ListTile(
-                                title: Text("Choisir sur les numéros "),
-                                onTap: () async {
-                                  setState(() {
-                                    Imageasset = false;
-                                    ImageInternet = false;
-                                    isVisible = false;
-                                  });
-                                  Navigator.of(context).pop(); 
-                                },
-                              ),
+  title: Text("Choisir sur les numéros"),
+  onTap: () async {
+    Navigator.of(context).pop();
+    Color color_choice = await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        List<Color> colors = [Colors.red, Colors.blue, Colors.green, Colors.grey, Colors.yellow, Colors.purple, Colors.orange];
+
+        return AlertDialog(
+          title: Text("Choisissez votre couleur"),
+          content: SingleChildScrollView(
+            child: Column(
+              children: colors
+                  .map((Color color) => GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop(color);
+                        },
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          color: color,
+                        ),
+                      ))
+                  .toList(),
+            ),
+          ),
+        );
+      },
+    );
+    if (color_choice != null) {
+      setColorChoice(color_choice);
+    }
+    setState(() {
+      Imageasset = false;
+      ImageInternet = false;
+      isVisible = false;
+    });
+  },
+),
+
+
+
                             ],
                           ),
                         );
@@ -562,8 +644,8 @@ class _Ex7State extends State<Ex7> {
                 width: 500,
                 child: GridView.count(
                   padding: const EdgeInsets.all(1),
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
+                  crossAxisSpacing: 1,
+                  mainAxisSpacing: 1,
                   crossAxisCount: _currentSliderValue.toInt(),
                   children: tiles,
                 ),
