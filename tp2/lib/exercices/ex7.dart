@@ -21,7 +21,7 @@ Map<int, List<int>> neighbors = {
 };
 
 Color color_choice = Colors.grey;
-bool isVisible = false;
+bool isButtonVisible = false;
 bool startButtonPressed = false;
 String imageUrl = "";
 String path_image = "";
@@ -158,12 +158,12 @@ class _TileWidgetState extends State<TileWidget> {
 }
 
 
-class IconChanger extends StatefulWidget {
+class IconDifficultyChanger extends StatefulWidget {
   @override
-  _IconChangerState createState() => _IconChangerState();
+  _IconDifficultyChangerState createState() => _IconDifficultyChangerState();
 }
 
-class _IconChangerState extends State<IconChanger> {
+class _IconDifficultyChangerState extends State<IconDifficultyChanger> {
   int _iconIndex = 0;
   List<IconData> _icons = [
     Icons.child_care, // Facile
@@ -338,7 +338,8 @@ class _Ex7State extends State<Ex7> {
       }
     });
   }
-  String getMessageFromInteger(int value) {
+
+  String Calcul_nombre_de_coup_pour_gagner(int value) {
                     
                     if (difficulty < 10) {
                       return "courante: $Nbcouppourgagner";
@@ -425,7 +426,7 @@ class _Ex7State extends State<Ex7> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                isVisible ? ElevatedButton(
+                isButtonVisible ? ElevatedButton(
                   onPressed: () {
                     
                     showDialog(
@@ -498,7 +499,7 @@ class _Ex7State extends State<Ex7> {
                                                     path_image = imagePaths[index];
                                                     Imageasset = true;
                                                     ImageInternet = false;
-                                                    isVisible = true;
+                                                    isButtonVisible = true;
                                                   });
                                                   Navigator.of(context).pop();
                                                 },
@@ -530,7 +531,7 @@ class _Ex7State extends State<Ex7> {
                                     path_image = imageUrl;
                                     Imageasset = false;
                                     ImageInternet = true;
-                                    isVisible = true;
+                                    isButtonVisible = true;
                                   });
                                   Navigator.of(context).pop(); 
                                 },
@@ -571,7 +572,7 @@ class _Ex7State extends State<Ex7> {
                                   setState(() {
                                     Imageasset = false;
                                     ImageInternet = false;
-                                    isVisible = false;
+                                    isButtonVisible = false;
                                   });
                                 },
                               ),
@@ -638,7 +639,7 @@ class _Ex7State extends State<Ex7> {
                         },
                   icon: Icon(Icons.add),
                 ),
-                IconChanger(),
+                IconDifficultyChanger(),
               ],
             ),
             Center(
@@ -665,7 +666,7 @@ class _Ex7State extends State<Ex7> {
                         texts = List.from(coup_joue.last.tiles_taquin);
                         currentWhiteTile = texts.indexOf("") + 1;
                         Nbcoupjoue -= 1;
-                        if (_currentSliderValue.toInt() < 4) {
+                        if (_currentSliderValue.toInt() < 4 && difficulty<10) {
                           solution = solveTaquin(coup_joue.last, finalTaquin);
                           Nbcouppourgagner = solution.length;
                         }
@@ -715,7 +716,7 @@ class _Ex7State extends State<Ex7> {
                 SizedBox(width: 10),
                 Expanded(
                     child: Text(
-                      'Nombre de coups pour gagner depuis la position  ${getMessageFromInteger(Nbcouppourgagner)}',
+                      'Nombre de coups pour gagner depuis la position  ${Calcul_nombre_de_coup_pour_gagner(Nbcouppourgagner)}',
                       overflow: TextOverflow.visible,
                     ),
                   ),
