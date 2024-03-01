@@ -66,7 +66,7 @@ class Taquin {
     }
   }
 
-  // Méthode pour calculer la valeur heuristique
+
   int heuristic() {
   int distance = 0;
   for (int i = 0; i < size * size; i++) {
@@ -83,7 +83,7 @@ class Taquin {
 }
 
 
-  // Méthode pour mettre à jour la priorité
+  
   void updatePriority() {
     h = heuristic();
     f = g + h;

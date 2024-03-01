@@ -3,7 +3,6 @@ import 'Taquin.dart';
 List<Taquin> exploreNeighbors(Taquin taquin) {
   List<Taquin> neighbors_taquin = [];
 
-  // Explorer les mouvements possibles et générer les états voisins
   Taquin neighborUp = taquin.copy();
   neighborUp.moveUp();
   neighborUp.g += 1;
@@ -31,10 +30,7 @@ List<Taquin> exploreNeighbors(Taquin taquin) {
 class PriorityQueue {
   List<Taquin> _elements;
 
-  // Constructeur prenant en paramètre la liste des éléments
   PriorityQueue(this._elements);
-
-  // Méthode pour ajouter un élément à la file de priorité
   void add(Taquin element) {
     int index = 0;
     while (index < _elements.length && (element.f - _elements[index].f > 0)) {
@@ -42,13 +38,9 @@ class PriorityQueue {
     }
     _elements.insert(index, element);
   }
-
-  // Méthode pour retirer le premier élément de la file de priorité
   Taquin removeFirst() {
     return _elements.removeAt(0);
   }
-
-  // Méthode pour vérifier si la file de priorité est vide
   bool get isEmpty => _elements.isEmpty;
 }
 
@@ -56,9 +48,8 @@ List<String> solveTaquin(Taquin initialTaquin, Taquin finalTaquin) {
   int nbcout = 0;
   Taquin copy_initialTaquin = initialTaquin.copy();
   List<String> moves = [];
-  List<Taquin> closedSet = []; // ensemble pour stocker les états déjà explorés
+  List<Taquin> closedSet = []; 
 
-  //PriorityQueue<Taquin> openSet = PriorityQueue<Taquin>((a, b) => (a.f).compareTo(b.f));
   PriorityQueue openSet = PriorityQueue([]);
   openSet.add(copy_initialTaquin);
 

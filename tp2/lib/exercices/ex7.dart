@@ -463,59 +463,65 @@ class _Ex7State extends State<Ex7> {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                              ListTile(
-  title: Text("Choisir une Image dans assets"),
-  onTap: () async {
-    Navigator.of(context).pop();
+                              title: Text("Choisir une Image dans assets"),
+                                onTap: () async {
+                                  Navigator.of(context).pop();
 
-    String? selectedImagePath = await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        List<String> imagePaths = [
-          'assets/Fellini.jpg',
-          'assets/Salvador_Dali_A_(Dali_Atomicus)_09633u.jpg',
-          'assets/sergio.jpg',
-        ];
+                                  String? selectedImagePath = await showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      List<String> imagePaths = [
+                                        'assets/Fellini.jpg',
+                                        'assets/Salvador_Dali_A_(Dali_Atomicus)_09633u.jpg',
+                                        'assets/sergio.jpg',
+                                        'assets/Casablanca.jpg',
+                                        'assets/CitizenKane.jpg',
+                                        'assets/DoTheRightThing.jpg',
+                                        'assets/Fewdollars.jpg',
+                                        'assets/Goodfellas.jpg',
+                                        'assets/Harakiri.jpg',
 
-        return AlertDialog(
-          title: Text("Choisissez votre image"),
-          content: Container(
-            width: double.maxFinite,
-            height: 200, 
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal, 
-              itemCount: imagePaths.length,
-              itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      path_image = imagePaths[index];
-                      Imageasset = true;
-                      ImageInternet = false;
-                      isVisible = true;
-                    });
-                    Navigator.of(context).pop();
-                  },
-                  child: Container(
-                    margin: EdgeInsets.all(8),
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(imagePaths[index]),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-        );
-      },
-    );
-  },
-),
+                                      ];
 
+                                      return AlertDialog(
+                                        title: Text("Choisissez votre image"),
+                                        content: Container(
+                                          width: double.maxFinite,
+                                          height: 200, 
+                                          child: ListView.builder(
+                                            scrollDirection: Axis.horizontal, 
+                                            itemCount: imagePaths.length,
+                                            itemBuilder: (BuildContext context, int index) {
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  setState(() {
+                                                    path_image = imagePaths[index];
+                                                    Imageasset = true;
+                                                    ImageInternet = false;
+                                                    isVisible = true;
+                                                  });
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Container(
+                                                  margin: EdgeInsets.all(8),
+                                                  width: 100,
+                                                  height: 100,
+                                                  decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                      image: AssetImage(imagePaths[index]),
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                              ), 
                               ListTile(
                                 title: Text("Charger une image du Web"),
                                 onTap: () async {
@@ -530,48 +536,45 @@ class _Ex7State extends State<Ex7> {
                                 },
                               ),
                               ListTile(
-  title: Text("Choisir sur les numéros"),
-  onTap: () async {
-    Navigator.of(context).pop();
-    Color color_choice = await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        List<Color> colors = [Colors.red, Colors.blue, Colors.green, Colors.grey, Colors.yellow, Colors.purple, Colors.orange];
+                                title: Text("Choisir sur les numéros"),
+                                onTap: () async {
+                                  Navigator.of(context).pop();
+                                  Color color_choice = await showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      List<Color> colors = [Colors.red, Colors.blue, Colors.green, Colors.grey, Colors.yellow, Colors.purple, Colors.orange];
 
-        return AlertDialog(
-          title: Text("Choisissez votre couleur"),
-          content: SingleChildScrollView(
-            child: Column(
-              children: colors
-                  .map((Color color) => GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).pop(color);
-                        },
-                        child: Container(
-                          width: 50,
-                          height: 50,
-                          color: color,
-                        ),
-                      ))
-                  .toList(),
-            ),
-          ),
-        );
-      },
-    );
-    if (color_choice != null) {
-      setColorChoice(color_choice);
-    }
-    setState(() {
-      Imageasset = false;
-      ImageInternet = false;
-      isVisible = false;
-    });
-  },
-),
-
-
-
+                                      return AlertDialog(
+                                        title: Text("Choisissez votre couleur"),
+                                        content: SingleChildScrollView(
+                                          child: Column(
+                                            children: colors
+                                                .map((Color color) => GestureDetector(
+                                                      onTap: () {
+                                                        Navigator.of(context).pop(color);
+                                                      },
+                                                      child: Container(
+                                                        width: 50,
+                                                        height: 50,
+                                                        color: color,
+                                                      ),
+                                                    ))
+                                                .toList(),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                  if (color_choice != null) {
+                                    setColorChoice(color_choice);
+                                  }
+                                  setState(() {
+                                    Imageasset = false;
+                                    ImageInternet = false;
+                                    isVisible = false;
+                                  });
+                                },
+                              ),
                             ],
                           ),
                         );
