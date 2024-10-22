@@ -12,7 +12,7 @@ This project was completed as part of my studies and received a score of 19.5/20
 
 ## Getting Started
 
-To realise this project I use the followingresources:
+To realise this project I use the following resources:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
@@ -31,6 +31,6 @@ To realise this project I use the followingresources:
 
 - **Flutter:** Framework used for application development.
 - **Dart:** Programming language used with Flutter.
-- **A* Algorithm:** Used for solving the sliding puzzle game.
+- ** $A^*$ Algorithm:** Used for solving the sliding puzzle game.
 
 
