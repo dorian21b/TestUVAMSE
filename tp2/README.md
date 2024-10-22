@@ -31,6 +31,6 @@ To realise this project I use the following resources:
 
 - **Flutter:** Framework used for application development.
 - **Dart:** Programming language used with Flutter.
-- ** $A^*$ Algorithm:** Used for solving the sliding puzzle game.
+- **$A^*$ Algorithm:** Used for solving the sliding puzzle game.
 
 
