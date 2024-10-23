@@ -52,7 +52,6 @@ GoRouter router() {
   );
 }
 
-
 class TestingApp extends StatelessWidget {
   const TestingApp({Key? key});
 
@@ -68,7 +67,7 @@ class TestingApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
-        title: 'TP 1 ',
+        title: 'TP 1',
         theme: ThemeData(
           colorSchemeSeed: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity,

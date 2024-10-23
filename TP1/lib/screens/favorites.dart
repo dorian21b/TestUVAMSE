@@ -14,7 +14,7 @@ class FavoritesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Vos Favoris',
+          'Your Favorites',
           style: TextStyle(                        
                 fontFamily: "PlayfairDisplay",
           ),

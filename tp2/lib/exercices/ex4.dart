@@ -38,7 +38,7 @@ class Ex4 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 4: Affichage d\'une tuile (un morceau d\'image)',
+          'Exercice 4: Displaying a tile (a piece of image)',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,

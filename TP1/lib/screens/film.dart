@@ -8,7 +8,6 @@ import 'package:tp1/models/towatch.dart';
 import 'package:tp1/screens/towatch.dart';
 import 'package:tp1/screens/home.dart';
 
-
 class FilmPage extends StatelessWidget {
   static const routeName = 'film_page';
   static const fullPath = '/$routeName';
@@ -21,7 +20,7 @@ class FilmPage extends StatelessWidget {
       Contenus(
         id: 1,
         title: 'Star Wars 4',
-        description: 'George Lucas ',
+        description: 'George Lucas',
         imageUrl: 'assets/films/StarWarsMoviePoster1977.jpg',
       ),
       Contenus(
@@ -50,13 +49,13 @@ class FilmPage extends StatelessWidget {
       ),
       Contenus(
         id: 6,
-        title: 'Do the right thing',
+        title: 'Do the Right Thing',
         description: 'Spike Lee',
         imageUrl: 'assets/films/DoTheRightThing.jpg',
       ),
       Contenus(
         id: 7,
-        title: 'Et pour quelques dollars de plus',
+        title: 'For a Few Dollars More',
         description: 'Sergio Leone',
         imageUrl: 'assets/films/Fewdollars.jpg',
       ),
@@ -75,12 +74,12 @@ class FilmPage extends StatelessWidget {
       Contenus(
         id: 10,
         title: 'In the Mood for Love',
-        description: 'Wong Kar wai',
+        description: 'Wong Kar Wai',
         imageUrl: 'assets/films/InTheMoodForLove.jpg',
       ),
       Contenus(
         id: 11,
-        title: 'M le maudit',
+        title: 'M',
         description: 'Fritz Lang',
         imageUrl: 'assets/films/MLeMaudit.jpg',
       ),
@@ -97,72 +96,71 @@ class FilmPage extends StatelessWidget {
         imageUrl: 'assets/films/OnceUponaTimeinHollywood.jpg',
       ),
       Contenus(
-        id: 13,
+        id: 14,
         title: 'Once Upon a Time in the West',
         description: 'Sergio Leone',
         imageUrl: 'assets/films/OnceUponaTimeintheWest.jpg',
       ),
       Contenus(
-        id: 14,
+        id: 15,
         title: 'Once Upon a Time ... the Revolution',
         description: 'Sergio Leone',
         imageUrl: 'assets/films/OnceUponaTimeRevolution.jpg',
       ),
       Contenus(
-        id: 15,
-        title: 'Parrain 1',
+        id: 16,
+        title: 'The Godfather 1',
         description: 'Francis Ford Coppola',
         imageUrl: 'assets/films/Parrain1.jpg',
       ),
       Contenus(
-        id: 16,
-        title: 'Parrain 2',
+        id: 17,
+        title: 'The Godfather 2',
         description: 'Francis Ford Coppola',
         imageUrl: 'assets/films/Parrain2.jpg',
       ),
       Contenus(
-        id: 17,
+        id: 18,
         title: 'Platoon',
         description: 'Oliver Stone',
         imageUrl: 'assets/films/Platoon.jpg',
       ),
       Contenus(
-        id: 18,
-        title: 'Pshychose',
+        id: 19,
+        title: 'Psycho',
         description: 'Alfred Hitchcock',
         imageUrl: 'assets/films/Pshycho.jpg',
       ),
       Contenus(
-        id: 19,
+        id: 20,
         title: 'Ran',
         description: 'Akira Kurosawa',
         imageUrl: 'assets/films/Ran.jpg',
       ),
       Contenus(
-        id: 20,
+        id: 21,
         title: 'Taxi Driver',
         description: 'Martin Scorsese',
         imageUrl: 'assets/films/Taxidriver.jpg',
       ),
       Contenus(
-        id: 21,
-        title: 'Le Bon, la Brute et le Truand',
+        id: 22,
+        title: 'The Good, the Bad and the Ugly',
         description: 'Sergio Leone',
         imageUrl: 'assets/films/TheGoodBadUgly.jpg',
       ),
       Contenus(
-        id: 22,
+        id: 23,
         title: 'Twin Peaks',
         description: 'David Lynch, Lesli Linka Glatter, Caleb Deschanel',
         imageUrl: 'assets/films/TwinPeaks.jpg',
       ),
       Contenus(
-        id: 23,
+        id: 24,
         title: 'Vertigo',
         description: 'Alfred Hitchcock',
         imageUrl: 'assets/films/Vertigo.jpg',
       ),
-      
     ];
 
     return Scaffold(
@@ -261,7 +259,7 @@ class ItemTile extends StatelessWidget {
                   SnackBar(
                     content: Text(towatchList.items.contains(contenus)
                         ? 'Added to Watch.'
-                        : 'Removed from watch.'),
+                        : 'Removed from Watch.'),
                     duration: const Duration(seconds: 1),
                   ),
                 );

@@ -14,9 +14,9 @@ class TowatchPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'À regarder',
-          style: TextStyle(                        
-                fontFamily: "PlayfairDisplay",
+          'To Watch',
+          style: TextStyle(
+            fontFamily: "PlayfairDisplay",
           ),
         ),
         backgroundColor: Colors.red[900],
@@ -37,7 +37,6 @@ class TowatchPage extends StatelessWidget {
   }
 }
 
-
 class TowatchItemTile extends StatelessWidget {
   final Contenus contenus;
 
@@ -49,12 +48,12 @@ class TowatchItemTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
         leading: Container(
-          width: 50, 
-          height: 50, 
+          width: 50,
+          height: 50,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(contenus.imageUrl), 
-              fit: BoxFit.cover, 
+              image: AssetImage(contenus.imageUrl),
+              fit: BoxFit.cover,
             ),
           ),
         ),
@@ -62,19 +61,19 @@ class TowatchItemTile extends StatelessWidget {
           contenus.title,
           key: Key('towatch_text_${contenus.id}'),
           style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "PlayfairDisplay",
-                            color: Colors.black,
-                        ),
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            fontFamily: "PlayfairDisplay",
+            color: Colors.black,
+          ),
         ),
         subtitle: Text(
           contenus.description,
           key: Key('towatch_description_${contenus.id}'),
           style: TextStyle(
-                            fontSize: 12,
-                            fontFamily: "PlayfairDisplay",
-                        ),
+            fontSize: 12,
+            fontFamily: "PlayfairDisplay",
+          ),
         ),
         trailing: IconButton(
           key: Key('remove_icon_${contenus.id}'),
@@ -83,7 +82,7 @@ class TowatchItemTile extends StatelessWidget {
             context.read<Towatch>().remove(contenus);
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text('Removed from towatch.'),
+                content: Text('Removed from to watch.'),
                 duration: Duration(seconds: 1),
               ),
             );

@@ -70,7 +70,7 @@ class _Ex6bState extends State<Ex6b> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 6b: Bouger des tuiles avec des couleurs uniques et un texte',
+          'Exercice 6b: Move tiles with unique colours and text',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,

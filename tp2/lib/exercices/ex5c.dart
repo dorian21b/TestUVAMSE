@@ -54,7 +54,7 @@ class _Ex5cState extends State<Ex5c> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 5c: configuration d\'un plateau de taquin',
+          'Exercice 5c: Board configuration of the Jeu de Taquin',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,
@@ -91,7 +91,7 @@ class _Ex5cState extends State<Ex5c> {
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    'Taille: ',
+                    'Size: ',
                     style: TextStyle(
                       fontFamily: "PlayfairDisplay",
                       fontSize: 18,

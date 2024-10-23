@@ -129,7 +129,7 @@ class _Ex6cState extends State<Ex6c> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 6c: bouger des tuiles dans une grille',
+          'Exercice 6c: Move tiles in a grid',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,

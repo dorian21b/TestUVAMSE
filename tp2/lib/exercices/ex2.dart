@@ -54,7 +54,7 @@ class _Ex2State extends State<Ex2> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 2: transformer une image',
+          'Exercice 2: Transform an image',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,

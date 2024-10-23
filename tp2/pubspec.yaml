@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    
 
   cupertino_icons: ^1.0.3
   provider: ^6.0.2
@@ -17,7 +16,7 @@ dependencies:
 
 dev_dependencies:
   analysis_defaults:
-    path: ../analysis_defaults
+    path: /Users/dorian-b/TestUVAMSE/analysis_defaults
   integration_test:
     sdk: flutter
   flutter_test:
@@ -36,5 +35,3 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-
-

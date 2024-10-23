@@ -12,7 +12,7 @@ class Ex1 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 1: afficher une image',
+          'Exercice 1: Display an image',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,

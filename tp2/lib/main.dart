@@ -20,47 +20,48 @@ void main() {
       home: TodosScreen(
         exercices: [
           Exercice(
-            'Exercice 1',
-            'Afficher une image',
+              'Exercise 1',
+              'Display an image',
           ),
           Exercice(
-            'Exercice 2',
-            'Transformer une image',
+              'Exercise 2',
+              'Transform an image',
           ),
           Exercice(
-            'Exercice 4',
-            'Affichage d\'une tuile (un morceau d\'image)',
+              'Exercise 4',
+              'Display a tile (a piece of image)',
           ),
           Exercice(
-            'Exercice 5a',
-            'Génération du plateau de tuiles de couleurs aléatoires',
+              'Exercise 5a',
+              'Generate a board of randomly colored tiles',
           ),
           Exercice(
-            'Exercice 5b',
-            'Génération du plateau de tuiles d\'une image',
+              'Exercise 5b',
+              'Generate a board of tiles from an image',
           ),
           Exercice(
-            'Exercice 5c',
-            'Configuration d\'un plateau de taquin',
+              'Exercise 5c',
+              'Setup a sliding taquin board',
           ),
           Exercice(
-            'Exercice 6a',
-            'Bouger des tuiles',
+              'Exercise 6a',
+              'Move tiles',
           ),
           Exercice(
-            'Exercice 6b',
-            'Bouger des tuiles avec des couleurs uniques et un texte',
+              'Exercise 6b',
+              'Move tiles with unique colors and text',
           ),
           Exercice(
-            'Exercice 6c',
-            'Exercice 6c: bouger des tuiles dans une grille',
-          ),Exercice(
-            'Exercice 6d',
-            'Bouger des tuiles dans une grille avec modificateur de taille',
+              'Exercise 6c',
+              'Exercise 6c: move tiles in a grid',
           ),
           Exercice(
-            'Exercice 7',
-            'Jeu de taquin',
+              'Exercise 6d',
+              'Move tiles in a taquin grid with size modifier',
+          ),
+          Exercice(
+              'Exercise 7',
+              'Jeu de taquin with an A star resolution algorithm.',
           ),
         ],
       ),

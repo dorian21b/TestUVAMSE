@@ -57,42 +57,40 @@ class Tile {
   });
 
   Widget croppedImageTile() {
-  if (this.text != "") {
-    if (Imageasset) {
-      return FittedBox(
-        fit: BoxFit.fill,
-        child: ClipRect(
-          child: Container(
-            child: Align(
-              alignment: this.alignment,
-              widthFactor: this.widthFactor,
-              heightFactor: this.heightFactor,
-              child: Image.asset(path_image),
+    if (this.text != "") {
+      if (Imageasset) {
+        return FittedBox(
+          fit: BoxFit.fill,
+          child: ClipRect(
+            child: Container(
+              child: Align(
+                alignment: this.alignment,
+                widthFactor: this.widthFactor,
+                heightFactor: this.heightFactor,
+                child: Image.asset(path_image),
+              ),
             ),
           ),
-        ),
-      );
+        );
+      } else {
+        return FittedBox(
+          fit: BoxFit.fill,
+          child: ClipRect(
+            child: Container(
+              child: Align(
+                alignment: this.alignment,
+                widthFactor: this.widthFactor,
+                heightFactor: this.heightFactor,
+                child: Image.network(path_image),
+              ),
+            ),
+          ),
+        );
+      }
     } else {
-      return FittedBox(
-        fit: BoxFit.fill,
-        child: ClipRect(
-          child: Container(
-            child: Align(
-              alignment: this.alignment,
-              widthFactor: this.widthFactor,
-              heightFactor: this.heightFactor,
-              child: Image.network(path_image),
-            ),
-          ),
-        ),
-      );
+      return Container(color: Colors.white);
     }
-  } else {
-    return Container(color: Colors.white); 
   }
-}
-
-  
 }
 
 class TileWidget extends StatefulWidget {
@@ -112,51 +110,46 @@ class _TileWidgetState extends State<TileWidget> {
     final bool isNeighbor =
         neighbors[widget.currentWhiteTile]?.contains(widget.tile.position) ??
             false;
-      if (Imageasset || ImageInternet){
-        return GestureDetector(
+    if (Imageasset || ImageInternet) {
+      return GestureDetector(
         onTap: () {
           widget.onTileTapped(widget.tile.position);
         },
-        child :  Container(
-        decoration: BoxDecoration(
-          border: isNeighbor ? Border.all(color: Colors.red, width: 5) : null,
+        child: Container(
+          decoration: BoxDecoration(
+            border: isNeighbor ? Border.all(color: Colors.red, width: 5) : null,
+          ),
+          child: widget.tile.croppedImageTile(),
         ),
-       child: widget.tile.croppedImageTile(),
-      ),
-
-    
       );
-
-    }else {
-        return GestureDetector(
-      onTap: () {
-        widget.onTileTapped(widget.tile.position);
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: widget.currentWhiteTile == widget.tile.position
-              ? Colors.white
-              : widget.tile.color,
-          border: isNeighbor ? Border.all(color: Colors.red, width: 5) : null,
-        ),
-        child: Center(
-          child: Text(
-            widget.tile.text,
-            style: TextStyle(
-              fontSize: 24 - (_currentSliderValue * 1),
-              color: widget.currentWhiteTile == widget.tile.position
-                  ? Colors.black
-                  : Colors.white,
+    } else {
+      return GestureDetector(
+        onTap: () {
+          widget.onTileTapped(widget.tile.position);
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: widget.currentWhiteTile == widget.tile.position
+                ? Colors.white
+                : widget.tile.color,
+            border: isNeighbor ? Border.all(color: Colors.red, width: 5) : null,
+          ),
+          child: Center(
+            child: Text(
+              widget.tile.text,
+              style: TextStyle(
+                fontSize: 24 - (_currentSliderValue * 1),
+                color: widget.currentWhiteTile == widget.tile.position
+                    ? Colors.black
+                    : Colors.white,
+              ),
             ),
           ),
         ),
-      ),
-    );
-
+      );
     }
   }
 }
-
 
 class IconDifficultyChanger extends StatefulWidget {
   @override
@@ -171,14 +164,13 @@ class _IconDifficultyChangerState extends State<IconDifficultyChanger> {
     Icons.whatshot, // Difficile
   ];
 
-  List<int> _intValues = [5, 10, 13]; 
-  int _intValueIndex = 0; 
+  List<int> _intValues = [5, 10, 13];
+  int _intValueIndex = 0;
 
   void _changeIconAndValue() {
     setState(() {
-      _iconIndex = (_iconIndex + 1) % _icons.length; 
-      _intValueIndex =
-          (_intValueIndex + 1) % _intValues.length; 
+      _iconIndex = (_iconIndex + 1) % _icons.length;
+      _intValueIndex = (_intValueIndex + 1) % _intValues.length;
       difficulty = _intValues[_intValueIndex];
       print(difficulty);
     });
@@ -197,7 +189,7 @@ class _IconDifficultyChangerState extends State<IconDifficultyChanger> {
         ),
         child: Center(
           child: Icon(
-            _icons[_iconIndex], 
+            _icons[_iconIndex],
             size: 50,
             color: Colors.white,
           ),
@@ -230,7 +222,6 @@ class _Ex7State extends State<Ex7> {
 
   void resetGame() {
     setState(() {
-      
       Nbcouppourgagner = 0;
       solution = [];
       isPlaying = false;
@@ -286,31 +277,38 @@ class _Ex7State extends State<Ex7> {
   }
 
   List<Widget> generateTiles(List<String> liste_texts) {
-  List<Widget> generatedTiles = [];
-  double factor = 1.0 / _currentSliderValue.toInt();
-  for (int i = 1; i <= _currentSliderValue.toInt() * _currentSliderValue.toInt(); i++) {
-    Tile tile;
-    if (Imageasset || ImageInternet) {
-      if (liste_texts[i - 1] == "") {
-        tile = Tile(Colors.white, "", i); 
+    List<Widget> generatedTiles = [];
+    double factor = 1.0 / _currentSliderValue.toInt();
+    for (int i = 1;
+        i <= _currentSliderValue.toInt() * _currentSliderValue.toInt();
+        i++) {
+      Tile tile;
+      if (Imageasset || ImageInternet) {
+        if (liste_texts[i - 1] == "") {
+          tile = Tile(Colors.white, "", i);
+        } else {
+          int a = int.parse(liste_texts[i - 1]) - 1;
+          int rowIndex = a ~/ _currentSliderValue.toInt();
+          int colIndex = a % _currentSliderValue.toInt();
+          double alignmentX =
+              -1 + (colIndex * 2) / (_currentSliderValue.toInt() - 1);
+          double alignmentY =
+              -1 + (rowIndex * 2) / (_currentSliderValue.toInt() - 1);
+          Alignment alignment = Alignment(alignmentX, alignmentY);
+          tile = Tile(color_choice, liste_texts[i - 1], i,
+              path: path_image,
+              alignment: alignment,
+              widthFactor: factor,
+              heightFactor: factor);
+        }
       } else {
-        int a = int.parse(liste_texts[i - 1]) - 1;
-        int rowIndex = a ~/ _currentSliderValue.toInt();
-        int colIndex = a % _currentSliderValue.toInt();
-        double alignmentX = -1 + (colIndex * 2) / (_currentSliderValue.toInt() - 1);
-        double alignmentY = -1 + (rowIndex * 2) / (_currentSliderValue.toInt() - 1);
-        Alignment alignment = Alignment(alignmentX, alignmentY);
-        tile = Tile(color_choice, liste_texts[i - 1], i,
-            path: path_image, alignment: alignment, widthFactor: factor, heightFactor: factor);
+        tile = Tile(color_choice, liste_texts[i - 1], i);
       }
-    } else {
-      tile = Tile(color_choice, liste_texts[i - 1], i);
-    }
 
-    generatedTiles.add(TileWidget(tile, currentWhiteTile, _handleTileTap));
+      generatedTiles.add(TileWidget(tile, currentWhiteTile, _handleTileTap));
+    }
+    return generatedTiles;
   }
-  return generatedTiles;
-}
 
   List<String> swap(List<String> liste_t, int index1, int index2) {
     String temp = liste_t[index1 - 1];
@@ -321,7 +319,8 @@ class _Ex7State extends State<Ex7> {
 
   void _handleTileTap(int tileNumber) {
     setState(() {
-      bool isNeighbor = neighbors[currentWhiteTile]?.contains(tileNumber) ?? false;
+      bool isNeighbor =
+          neighbors[currentWhiteTile]?.contains(tileNumber) ?? false;
       if (isNeighbor) {
         int a = tileNumber;
         List<String> newtexts = swap(texts, currentWhiteTile, tileNumber);
@@ -330,34 +329,33 @@ class _Ex7State extends State<Ex7> {
         Taquin coup = Taquin(coup_text, _currentSliderValue.toInt());
         coup_joue.add(coup);
         Nbcoupjoue += 1;
-        if (_currentSliderValue.toInt() < 4 && difficulty<10) {
+        if (_currentSliderValue.toInt() < 4 && difficulty < 10) {
           solution = solveTaquin(coup, finalTaquin);
           Nbcouppourgagner = solution.length;
-          
         }
       }
     });
   }
 
   String Calcul_nombre_de_coup_pour_gagner(int value) {
-                    
-                    if (difficulty < 10) {
-                      return "courante: $Nbcouppourgagner";
-                    } else {
-                      return "initiale: $Nbcouppourgagner";
-                    }
+    if (difficulty < 10) {
+      return "courante: $Nbcouppourgagner";
+    } else {
+      return "initiale: $Nbcouppourgagner";
+    }
   }
 
   void shuffleTiles() {
-    List<String> shuffledTexts = List.from(texts); 
-    Taquin taquin_a_melanger = Taquin(shuffledTexts, _currentSliderValue.toInt());
+    List<String> shuffledTexts = List.from(texts);
+    Taquin taquin_a_melanger =
+        Taquin(shuffledTexts, _currentSliderValue.toInt());
     List<Taquin> already_explored = [taquin_a_melanger];
     int compteur = 0;
 
     while (compteur < difficulty) {
       List<Taquin> neighbors_taquin = exploreNeighbors(taquin_a_melanger);
       already_explored.add(taquin_a_melanger);
-      neighbors_taquin.shuffle(); 
+      neighbors_taquin.shuffle();
       for (Taquin neighbor in neighbors_taquin) {
         bool alrea = false;
         for (int i = 0; i < already_explored.length; i++) {
@@ -410,7 +408,7 @@ class _Ex7State extends State<Ex7> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 7: jeu de taquin ',
+          'Exercice 7: Jeu de taquin ',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,
@@ -426,162 +424,190 @@ class _Ex7State extends State<Ex7> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                isButtonVisible ? ElevatedButton(
-                  onPressed: () {
-                    
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('Voici l\'image à reconstituer'),
-                          content: Imageasset ? Image.asset(path_image) : Image.network(path_image),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: Text('Fermer'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                  child: Text('Afficher l\'image'),
-                ) : Container(),
+                isButtonVisible
+                    ? ElevatedButton(
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title:
+                                    Text('Here is the picture to reconstruct'),
+                                content: Imageasset
+                                    ? Image.asset(path_image)
+                                    : Image.network(path_image),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text('Fermer'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: Text('Display image'),
+                      )
+                    : Container(),
                 IconButton(
                   icon: Icon(Icons.add_photo_alternate),
                   iconSize: 40,
                   onPressed: startButtonPressed
                       ? null
                       : () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Choisir une option"),
-                          content: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                             ListTile(
-                              title: Text("Choisir une Image dans assets"),
-                                onTap: () async {
-                                  Navigator.of(context).pop();
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text("Choose an option"),
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    ListTile(
+                                      title: Text("Choose an Image in assets"),
+                                      onTap: () async {
+                                        Navigator.of(context).pop();
 
-                                  String? selectedImagePath = await showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      List<String> imagePaths = [
-                                        'assets/Fellini.jpg',
-                                        'assets/Salvador_Dali_A_(Dali_Atomicus)_09633u.jpg',
-                                        'assets/sergio.jpg',
-                                        'assets/Casablanca.jpg',
-                                        'assets/CitizenKane.jpg',
-                                        'assets/DoTheRightThing.jpg',
-                                        'assets/Fewdollars.jpg',
-                                        'assets/Goodfellas.jpg',
-                                        'assets/Harakiri.jpg',
+                                        String? selectedImagePath =
+                                            await showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            List<String> imagePaths = [
+                                              'assets/Fellini.jpg',
+                                              'assets/Salvador_Dali_A_(Dali_Atomicus)_09633u.jpg',
+                                              'assets/sergio.jpg',
+                                              'assets/Casablanca.jpg',
+                                              'assets/CitizenKane.jpg',
+                                              'assets/DoTheRightThing.jpg',
+                                              'assets/Fewdollars.jpg',
+                                              'assets/Goodfellas.jpg',
+                                              'assets/Harakiri.jpg',
+                                            ];
 
-                                      ];
-
-                                      return AlertDialog(
-                                        title: Text("Choisissez votre image"),
-                                        content: Container(
-                                          width: double.maxFinite,
-                                          height: 200, 
-                                          child: ListView.builder(
-                                            scrollDirection: Axis.horizontal, 
-                                            itemCount: imagePaths.length,
-                                            itemBuilder: (BuildContext context, int index) {
-                                              return GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    path_image = imagePaths[index];
-                                                    Imageasset = true;
-                                                    ImageInternet = false;
-                                                    isButtonVisible = true;
-                                                  });
-                                                  Navigator.of(context).pop();
-                                                },
-                                                child: Container(
-                                                  margin: EdgeInsets.all(8),
-                                                  width: 100,
-                                                  height: 100,
-                                                  decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      image: AssetImage(imagePaths[index]),
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                              ), 
-                              ListTile(
-                                title: Text("Charger une image du Web"),
-                                onTap: () async {
-                                  setState(() {
-                                    imageUrl = 'https://picsum.photos/512';
-                                    path_image = imageUrl;
-                                    Imageasset = false;
-                                    ImageInternet = true;
-                                    isButtonVisible = true;
-                                  });
-                                  Navigator.of(context).pop(); 
-                                },
-                              ),
-                              ListTile(
-                                title: Text("Choisir sur les numéros"),
-                                onTap: () async {
-                                  Navigator.of(context).pop();
-                                  Color color_choice = await showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      List<Color> colors = [Colors.red, Colors.blue, Colors.green, Colors.grey, Colors.yellow, Colors.purple, Colors.orange];
-
-                                      return AlertDialog(
-                                        title: Text("Choisissez votre couleur"),
-                                        content: SingleChildScrollView(
-                                          child: Column(
-                                            children: colors
-                                                .map((Color color) => GestureDetector(
+                                            return AlertDialog(
+                                              title: Text("Choose your image"),
+                                              content: Container(
+                                                width: double.maxFinite,
+                                                height: 200,
+                                                child: ListView.builder(
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemCount: imagePaths.length,
+                                                  itemBuilder:
+                                                      (BuildContext context,
+                                                          int index) {
+                                                    return GestureDetector(
                                                       onTap: () {
-                                                        Navigator.of(context).pop(color);
+                                                        setState(() {
+                                                          path_image =
+                                                              imagePaths[index];
+                                                          Imageasset = true;
+                                                          ImageInternet = false;
+                                                          isButtonVisible =
+                                                              true;
+                                                        });
+                                                        Navigator.of(context)
+                                                            .pop();
                                                       },
                                                       child: Container(
-                                                        width: 50,
-                                                        height: 50,
-                                                        color: color,
+                                                        margin:
+                                                            EdgeInsets.all(8),
+                                                        width: 100,
+                                                        height: 100,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          image:
+                                                              DecorationImage(
+                                                            image: AssetImage(
+                                                                imagePaths[
+                                                                    index]),
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
                                                       ),
-                                                    ))
-                                                .toList(),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  );
-                                  if (color_choice != null) {
-                                    setColorChoice(color_choice);
-                                  }
-                                  setState(() {
-                                    Imageasset = false;
-                                    ImageInternet = false;
-                                    isButtonVisible = false;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    );
-                  },
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                    ListTile(
+                                      title:
+                                          Text("Upload an image from the Web"),
+                                      onTap: () async {
+                                        setState(() {
+                                          imageUrl =
+                                              'https://picsum.photos/512';
+                                          path_image = imageUrl;
+                                          Imageasset = false;
+                                          ImageInternet = true;
+                                          isButtonVisible = true;
+                                        });
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                    ListTile(
+                                      title: Text("Select on numbers"),
+                                      onTap: () async {
+                                        Navigator.of(context).pop();
+                                        Color color_choice = await showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            List<Color> colors = [
+                                              Colors.red,
+                                              Colors.blue,
+                                              Colors.green,
+                                              Colors.grey,
+                                              Colors.yellow,
+                                              Colors.purple,
+                                              Colors.orange
+                                            ];
+
+                                            return AlertDialog(
+                                              title: Text("Choose your colour"),
+                                              content: SingleChildScrollView(
+                                                child: Column(
+                                                  children: colors
+                                                      .map((Color color) =>
+                                                          GestureDetector(
+                                                            onTap: () {
+                                                              Navigator.of(
+                                                                      context)
+                                                                  .pop(color);
+                                                            },
+                                                            child: Container(
+                                                              width: 50,
+                                                              height: 50,
+                                                              color: color,
+                                                            ),
+                                                          ))
+                                                      .toList(),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                        if (color_choice != null) {
+                                          setColorChoice(color_choice);
+                                        }
+                                        setState(() {
+                                          Imageasset = false;
+                                          ImageInternet = false;
+                                          isButtonVisible = false;
+                                        });
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        },
                 ),
                 IconButton(
                   onPressed: startButtonPressed
@@ -590,10 +616,11 @@ class _Ex7State extends State<Ex7> {
                           setState(() {
                             _currentSliderValue =
                                 (_currentSliderValue - 1).clamp(2, 10);
-                            texts = definition_texts(_currentSliderValue.toInt());
+                            texts =
+                                definition_texts(_currentSliderValue.toInt());
                             tiles = generateTiles(texts);
-                            neighbors =
-                                definition_neighbors(_currentSliderValue.toInt());
+                            neighbors = definition_neighbors(
+                                _currentSliderValue.toInt());
                           });
                         },
                   icon: Icon(Icons.remove),
@@ -609,11 +636,11 @@ class _Ex7State extends State<Ex7> {
                         startButtonPressed = true;
                         shuffleTiles();
                         List<String> initialTaquin_texts = List.from(texts);
-                        final Taquin initialTaquin =
-                            Taquin(initialTaquin_texts, _currentSliderValue.toInt());
-                            coup_joue.add(initialTaquin);
-                            //print(initialTaquin.tiles_taquin);
-                            //print(finalTaquin.tiles_taquin);
+                        final Taquin initialTaquin = Taquin(
+                            initialTaquin_texts, _currentSliderValue.toInt());
+                        coup_joue.add(initialTaquin);
+                        //print(initialTaquin.tiles_taquin);
+                        //print(finalTaquin.tiles_taquin);
                         if (_currentSliderValue.toInt() < 4) {
                           solution = solveTaquin(initialTaquin, finalTaquin);
                           Nbcouppourgagner = solution.length;
@@ -630,11 +657,12 @@ class _Ex7State extends State<Ex7> {
                           setState(() {
                             _currentSliderValue =
                                 (_currentSliderValue + 1).clamp(2, 10);
-                            texts = definition_texts(_currentSliderValue.toInt());
+                            texts =
+                                definition_texts(_currentSliderValue.toInt());
                             //print(texts);
                             tiles = generateTiles(texts);
-                            neighbors =
-                                definition_neighbors(_currentSliderValue.toInt());
+                            neighbors = definition_neighbors(
+                                _currentSliderValue.toInt());
                           });
                         },
                   icon: Icon(Icons.add),
@@ -666,7 +694,8 @@ class _Ex7State extends State<Ex7> {
                         texts = List.from(coup_joue.last.tiles_taquin);
                         currentWhiteTile = texts.indexOf("") + 1;
                         Nbcoupjoue -= 1;
-                        if (_currentSliderValue.toInt() < 4 && difficulty<10) {
+                        if (_currentSliderValue.toInt() < 4 &&
+                            difficulty < 10) {
                           solution = solveTaquin(coup_joue.last, finalTaquin);
                           Nbcouppourgagner = solution.length;
                         }
@@ -675,10 +704,10 @@ class _Ex7State extends State<Ex7> {
                       }
                     });
                   },
-                  child: const Text('Annuler coup'),
+                  child: const Text('Cancel move'),
                 ),
                 SizedBox(width: 10),
-                Text('Nombre de coups joués: $Nbcoupjoue'),
+                Text('Number of moves played:: $Nbcoupjoue'),
               ],
             ),
             Row(
@@ -703,7 +732,7 @@ class _Ex7State extends State<Ex7> {
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('Fermer'),
+                                child: Text('Close'),
                               ),
                             ],
                           );
@@ -715,11 +744,11 @@ class _Ex7State extends State<Ex7> {
                 ),
                 SizedBox(width: 10),
                 Expanded(
-                    child: Text(
-                      'Nombre de coups pour gagner depuis la position  ${Calcul_nombre_de_coup_pour_gagner(Nbcouppourgagner)}',
-                      overflow: TextOverflow.visible,
-                    ),
+                  child: Text(
+                    'Number of moves to win from current position  ${Calcul_nombre_de_coup_pour_gagner(Nbcouppourgagner)}',
+                    overflow: TextOverflow.visible,
                   ),
+                ),
               ],
             ),
           ],

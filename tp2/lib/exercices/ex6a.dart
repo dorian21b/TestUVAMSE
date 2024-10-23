@@ -78,7 +78,7 @@ class _Ex6aState extends State<Ex6a> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 6a: bouger des tuiles',
+          'Exercice 6a: Move tiles',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,

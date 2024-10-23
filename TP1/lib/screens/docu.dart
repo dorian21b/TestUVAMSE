@@ -8,7 +8,6 @@ import 'package:tp1/models/towatch.dart';
 import 'package:tp1/screens/towatch.dart';
 import 'package:tp1/screens/home.dart';
 
-
 class DocuPage extends StatelessWidget {
   static const routeName = 'docu_page';
   static const fullPath = '/$routeName';
@@ -102,13 +101,12 @@ class DocuPage extends StatelessWidget {
         description: 'Stephane Chatry',
         imageUrl: 'assets/docu/Tousresistants.jpg',
       ),
-      
     ];
 
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Documentaires',
+          'Documentaries',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
           ),
@@ -116,7 +114,7 @@ class DocuPage extends StatelessWidget {
         backgroundColor: Colors.red[900],
       ),
       body: ListView.builder(
-        itemCount: contenus.length, 
+        itemCount: contenus.length,
         cacheExtent: 20.0,
         controller: ScrollController(),
         padding: const EdgeInsets.symmetric(vertical: 16),

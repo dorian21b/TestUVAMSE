@@ -56,7 +56,7 @@ class Ex5b extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 5b: génération du plateau de tuiles d\'une image',
+          'Exercice 5b: Generation of an image tile tray',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,

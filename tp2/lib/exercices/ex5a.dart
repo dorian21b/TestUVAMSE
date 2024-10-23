@@ -23,7 +23,7 @@ class Ex5a extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 5a: génération du plateau de tuiles de couleurs aléatoires',
+          'Exercice 5a: Generation of the randomly coloured tile board',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,

@@ -163,7 +163,7 @@ class _Ex6dState extends State<Ex6d> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Exercice 6d: Bouger des tuiles dans une grille avec modificateur de taille',
+          'Exercice 6d: Moving tiles in a grid with size modifier',
           style: TextStyle(
             fontFamily: "PlayfairDisplay",
             fontSize: 16,
@@ -194,7 +194,7 @@ class _Ex6dState extends State<Ex6d> {
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    'Taille: ',
+                    'Size: ',
                     style: TextStyle(
                       fontFamily: "PlayfairDisplay",
                       fontSize: 18,
