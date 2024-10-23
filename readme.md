@@ -12,7 +12,7 @@ This project was completed as part of my studies and received a score of 19.5/20
 
 2. [**TP2: Jeu de Taquin**](tp2/TP2/README.md)
 
-<img src="TP2/advanced_shuffle_game.jpeg" alt="Platform Screenshot" width="250" />
+<img src="tp2/advanced_shuffle_game.jpeg" alt="Platform Screenshot" width="250" />
 
 - In this section, I developed a Jeu de Taquin with multiple stages and difficulty levels. This game includes a selection menu that allows users to choose between the different exercises.
 
